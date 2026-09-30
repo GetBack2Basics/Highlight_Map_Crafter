@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rathmines & Lake Macquarie Explorer | Artsy Interactive Map</title>
+  <meta name="description"
+    content="A curated artsy interactive map and spatial course planner centered at 21 Bournville Road, Rathmines NSW, featuring verified open-source media and NSW SEED data.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- MapLibre GL JS / GeoLibre CSS & JS -->
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="app-container">
+
+    <!-- Top Navigation Header -->
+    <header class="top-nav-bar">
+      <div class="brand-badge-card">
+        <div class="brand-icon-pulse">📍</div>
+        <div class="brand-info">
+          <h1>Rathmines & Beyond</h1>
+          <p><span>✦</span> 21 Bournville Rd, Rathmines NSW 2283</p>
+        </div>
+      </div>
+
+      <!-- Tab Switcher (POIs vs SpatialCourse_Crafter) -->
+      <div class="nav-tab-group">
+        <button id="tab-poi" class="tab-btn active">
+          <span>🗺️</span> Discover POIs
+        </button>
+        <button id="tab-courses" class="tab-btn">
+          <span>🚀</span> Course Crafter
+        </button>
+      </div>
+
+      <!-- Basemap Switcher Selector -->
+      <div class="basemap-selector-wrap">
+        <span style="font-size: 0.85rem;">🗺️</span>
+        <select id="basemap-select" class="basemap-dropdown" title="Switch Basemap Layer">
+          <option value="osm-standard">OSM Standard</option>
+          <option value="osm-terrain">OSM / Topo Terrain</option>
+          <option value="esri-imagery">ESRI Satellite Imagery</option>
+          <option value="carto-voyager">CARTO Voyager</option>
+        </select>
+      </div>
+
+      <!-- Quick Action Tools -->
+      <div class="quick-tools-card">
+        <button id="btn-add-place" class="tab-btn"
+          style="background: linear-gradient(135deg, #10b981, #059669); color: #fff;"
+          title="Add a New Place & Personal Recommendation">
+          <span>➕</span> Add Place
+        </button>
+        <button id="btn-toggle-admin-drag" class="icon-action-btn"
+          title="Admin Mode: Toggle Drag-and-Drop Pin Relocation">
+          📍
+        </button>
+        <button id="btn-toggle-3d" class="icon-action-btn" title="Toggle 3D Elevation Terrain & Hillshading">
+          🏔️
+        </button>
+        <button id="btn-toggle-rings" class="icon-action-btn" title="Toggle Distance Isochrone Rings">
+          ⭕
+        </button>
+        <button id="btn-reset-view" class="icon-action-btn" title="Reset View to 21 Bournville Road">
+          🎯
+        </button>
+      </div>
+    </header>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Floating Isochrone Drive Time Legend -->
+    <div class="isochrone-legend-card" id="isochrone-legend">
+      <div class="legend-header">
+        <span>⏱️ Drive Isochrone Boundaries (Click to Zoom)</span>
+      </div>
+      <div class="legend-items">
+        <div class="legend-row" data-zone="zone_5m" title="Click to zoom to 5 min boundary"><span
+            class="legend-dot dot-zone1"></span> <strong>5 mins</strong> (Rathmines, Catalina Base, Bakery)</div>
+        <div class="legend-row" data-zone="zone_15m" title="Click to zoom to 15 min boundary"><span
+            class="legend-dot dot-zone2"></span> <strong>15 mins</strong> (Toronto, Wangi Wangi, Kilaben Bay)</div>
+        <div class="legend-row" data-zone="zone_30m" title="Click to zoom to 30 min boundary"><span
+            class="legend-dot dot-zone3"></span> <strong>30 mins</strong> (Warners Bay, Speers Pt, Belmont)</div>
+        <div class="legend-row" data-zone="zone_1h" title="Click to zoom to 1 hour boundary"><span
+            class="legend-dot dot-zone4"></span> <strong>1 hour</strong> (Newcastle, Caves Beach, Pokolbin)</div>
+        <div class="legend-row" data-zone="zone_2h" title="Click to zoom to 2 hours boundary"><span
+            class="legend-dot dot-zone5"></span> <strong>2 hours</strong> (Port Stephens, Singleton, Central Coast)
+        </div>
+      </div>
+    </div>
+
+    <!-- Left Sidebar: Filters & Catalog -->
+    <aside class="sidebar-panel" id="sidebar-panel">
+      <!-- Home Hub Banner -->
+      <div class="home-hub-strip" id="btn-focus-home" title="Click to center on Home (21 Bournville Rd)">
+        <div class="home-hub-icon">🏡</div>
+        <div class="home-hub-details">
+          <div class="home-hub-title">Home Base</div>
+          <div class="home-hub-address">21 Bournville Road, Rathmines NSW</div>
+        </div>
+        <span class="home-hub-tag">0 min</span>
+      </div>
+
+      <!-- Search Box -->
+      <div class="sidebar-header">
+        <div class="search-box-wrap">
+          <span class="search-icon-svg">🔍</span>
+          <input type="text" id="poi-search-input" placeholder="Search places, reviews, tips..." autocomplete="off">
+        </div>
+      </div>
+
+      <!-- Time Ring Filter Section (Shown in POI Tab) -->
+      <div class="filter-section" id="filter-section-poi">
+        <div class="filter-title">
+          <span>Drive Time Isochrone (Road Route)</span>
+          <span id="poi-count-badge" style="color: var(--accent-cyan); font-weight: 700;">16 Sites</span>
+        </div>
+        <div class="time-rings-grid" style="grid-template-columns: repeat(6, 1fr);">
+          <button class="ring-filter-btn active" data-zone="all">All</button>
+          <button class="ring-filter-btn" data-zone="zone_5m">5m</button>
+          <button class="ring-filter-btn" data-zone="zone_15m">15m</button>
+          <button class="ring-filter-btn" data-zone="zone_30m">30m</button>
+          <button class="ring-filter-btn" data-zone="zone_1h">1h</button>
+          <button class="ring-filter-btn" data-zone="zone_2h">2h</button>
+        </div>
+
+        <div class="category-pills-wrap" id="category-pills-container" style="margin-top: 10px;">
+          <button class="category-pill active" data-cat="all" title="All Categories">All</button>
+          <button class="category-pill" data-cat="dining" title="Dining & Bistros">🍽️</button>
+          <button class="category-pill" data-cat="nature" title="Parks & Nature Reserves">🌳</button>
+          <button class="category-pill" data-cat="beach" title="Surf & Ocean Beaches">🏄</button>
+          <button class="category-pill" data-cat="heritage" title="Heritage & Arts">🏛️</button>
+          <button class="category-pill" data-cat="boating" title="Boating & Watersports">⛵</button>
+          <button class="category-pill" data-cat="wine" title="Wine & Cellar Doors">🍷</button>
+          <button class="category-pill" data-cat="essentials" title="Bakeries & Essentials">🥖</button>
+          <button class="category-pill" data-cat="shopping" title="Shopping & Retail">🛍️</button>
+          <button class="category-pill" data-cat="leisure" title="Golf & Sports">⛳</button>
+        </div>
+      </div>
+
+      <!-- Cards Scroll Container -->
+      <div class="items-scroll-container" id="cards-container">
+        <!-- POI / Course cards injected dynamically via app.js -->
+      </div>
+
+      <!-- Sidebar Footer Tools -->
+      <div class="sidebar-footer-bar">
+        <button id="btn-export-geojson" class="footer-tool-btn"
+          title="Download updated GeoJSON dataset with all personal places & recommendations">
+          <span>💾</span> Export GeoJSON
+        </button>
+        <button id="btn-pick-map-poi" class="footer-tool-btn" title="Click anywhere on the map to add a place">
+          <span>📍</span> Click Map to Add
+        </button>
+      </div>
+    </aside>
+
+    <!-- Right Detail Drawer / Inspector Panel -->
+    <aside class="detail-drawer" id="detail-drawer">
+      <div class="drawer-image-wrap">
+        <img id="drawer-img" class="drawer-img" src="" alt="Location photo">
+        <button id="drawer-close" class="drawer-close-btn" title="Close Panel">✕</button>
+        <div class="drawer-photo-credit">
+          <span id="drawer-credit-author">Wikimedia Commons</span>
+          <span id="drawer-credit-license">CC BY-SA</span>
+        </div>
+      </div>
+
+      <div class="drawer-body">
+        <div class="drawer-meta-badges">
+          <span id="drawer-time-badge" class="badge-time">~10 mins</span>
+          <span id="drawer-cat-badge" class="badge-cat">Heritage & Nature</span>
+          <span id="drawer-rec-badge" class="badge-rec" style="display: none;">⭐ Local Recommendation</span>
+        </div>
+
+        <h2 id="drawer-title" class="drawer-title">Rathmines Park & Catalina Base</h2>
+        <p id="drawer-address" style="font-size: 0.76rem; color: var(--text-muted);">Dorrington Rd, Rathmines NSW 2283
+        </p>
+
+        <!-- Personal Recommendation / Host Note Box -->
+        <div class="host-tip-box" id="host-tip-box">
+          <div class="host-tip-header">
+            <span class="host-tip-title">⭐ Host Recommendation & Insider Tip</span>
+            <button id="btn-edit-host-tip" class="host-tip-edit-btn" title="Add or edit your personal tip">✍️ Edit
+              Tip</button>
+          </div>
+          <p id="host-tip-text" class="host-tip-text">No personal recommendation added yet. Click 'Edit Tip' to add your
+            insider suggestions!</p>
+          <div id="host-tip-edit-container" class="host-tip-edit-wrap" style="display: none;">
+            <textarea id="host-tip-input" rows="3"
+              placeholder="Add your personal recommendation, favorite menu items, or insider tips for this place..."></textarea>
+            <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px;">
+              <button id="btn-cancel-host-tip" class="btn-sm-secondary">Cancel</button>
+              <button id="btn-save-host-tip" class="btn-sm-primary">Save Tip</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- NSW SEED Environmental Metadata Card -->
+        <div class="nsw-seed-box">
+          <div class="nsw-seed-label">
+            <span>🌿</span> NSW SEED Environmental Layer
+          </div>
+          <div id="drawer-nsw-seed" class="nsw-seed-val">State Heritage Register / Coastal Open Space</div>
+        </div>
+
+        <p id="drawer-desc" class="drawer-desc">Description text goes here.</p>
+
+        <div class="highlights-section">
+          <h4>Key Highlights</h4>
+          <ul id="drawer-highlights" class="highlights-list">
+            <!-- Injected dynamically -->
+          </ul>
+        </div>
+
+        <!-- Open-Source Navigation Deep Links (OSM & Waze) -->
+        <div class="drawer-actions-grid">
+          <a id="btn-nav-osm" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-osm">
+            <span>🗺️</span> OpenStreetMap
+          </a>
+          <a id="btn-nav-waze" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-waze">
+            <span>🚗</span> Waze Navigation
+          </a>
+        </div>
+
+        <!-- Admin Relocate Pin Action -->
+        <button id="btn-relocate-pin" class="footer-tool-btn"
+          style="width: 100%; margin-top: 10px; background: rgba(59, 130, 246, 0.16); border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; justify-content: center;"
+          title="Move this pin by clicking on the map or dragging it">
+          <span>📍</span> Move / Relocate Pin on Map
+        </button>
+      </div>
+    </aside>
+
+    <!-- Add New Place Modal -->
+    <div class="modal-backdrop" id="add-place-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.4rem;">➕</span>
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff;">Add New Place</h3>
+              <p style="font-size: 0.75rem; color: var(--text-secondary);">Add a spot with your personal recommendations
+                & tips</p>
+            </div>
+          </div>
+          <button id="modal-close-btn" class="drawer-close-btn" style="position: static;">✕</button>
+        </div>
+
+        <form id="add-place-form" class="modal-form">
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Place Name *</label>
+              <input type="text" id="new-poi-name" required placeholder="e.g. Balcolyn Secret Bay & Sunset Point">
+            </div>
+            <div class="form-group flex-1">
+              <label>Category *</label>
+              <select id="new-poi-category" required>
+                <option value="dining">🍽️ Dining & Bars</option>
+                <option value="nature">🌳 Parks & Nature</option>
+                <option value="beach">🏄 Surf & Ocean</option>
+                <option value="heritage">🏛️ Heritage & Arts</option>
+                <option value="boating">⛵ Boating & Watersports</option>
+                <option value="wine">🍷 Wine & Gastronomy</option>
+                <option value="essentials">🥖 Bakery & Essentials</option>
+                <option value="shopping">🛍️ Retail & Lifestyle</option>
+                <option value="leisure">⛳ Golf & Sports</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Coordinates (Longitude, Latitude) *</label>
+              <div style="display: flex; gap: 6px;">
+                <input type="text" id="new-poi-coords" required placeholder="151.5847, -33.0428">
+                <button type="button" id="btn-pick-coords" class="btn-sm-secondary" title="Pick point on map"
+                  style="white-space: nowrap;">📍 Pick</button>
+              </div>
+            </div>
+            <div class="form-group flex-1">
+              <label>Travel Time from 21 Bournville Rd</label>
+              <select id="new-poi-zone">
+                <option value="zone_5m">5 mins (Immediate Rathmines)</option>
+                <option value="zone_15m">15 mins (Toronto / Wangi / Kilaben Bay)</option>
+                <option value="zone_30m">30 mins (Warners Bay / Speers Pt / Belmont)</option>
+                <option value="zone_1h">1 hour (Newcastle / Caves Beach / Pokolbin)</option>
+                <option value="zone_2h">2 hours (Port Stephens / Singleton / Central Coast)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Address / Location Reference</label>
+            <input type="text" id="new-poi-address" placeholder="e.g. 123 Watkins Rd, Wangi Wangi NSW">
+          </div>
+
+          <div class="form-group">
+            <label>General Description</label>
+            <textarea id="new-poi-desc" rows="2"
+              placeholder="Brief overview of what makes this place special..."></textarea>
+          </div>
+
+          <div class="form-group"
+            style="background: rgba(255, 183, 3, 0.08); padding: 10px; border-radius: var(--radius-sm); border: 1px solid rgba(255, 183, 3, 0.25);">
+            <label style="color: var(--accent-gold); font-weight: 700;">⭐ Your Personal Recommendation & Insider
+              Tip</label>
+            <textarea id="new-poi-recommendation" rows="2"
+              placeholder="e.g. 'Order the smoked trout and grab a table on the lawn at 4:30 PM for sunset!'"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Key Highlights (comma-separated)</label>
+              <input type="text" id="new-poi-highlights" placeholder="Sunset views, Great coffee, Dog friendly">
+            </div>
+            <div class="form-group flex-1">
+              <label>NSW SEED / Environment Context</label>
+              <input type="text" id="new-poi-seed" placeholder="Lake Foreshore / National Park Buffer">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label>Photo URL (Optional)</label>
+              <input type="url" id="new-poi-image" placeholder="https://upload.wikimedia.org/... or Unsplash">
+            </div>
+            <div class="form-group flex-1">
+              <label>Photo Credit / License</label>
+              <input type="text" id="new-poi-credit" placeholder="Photo: Personal / CC BY-SA">
+            </div>
+          </div>
+
+          <div class="modal-actions-bar">
+            <button type="button" id="btn-cancel-modal" class="btn-sm-secondary"
+              style="padding: 10px 20px;">Cancel</button>
+            <button type="submit" class="btn-sm-primary"
+              style="padding: 10px 24px; font-weight: 700; font-size: 0.9rem;">💾 Save Place & Tip</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox-modal">
+      <button class="lightbox-close-btn" id="lightbox-close">✕</button>
+      <div class="lightbox-content-card">
+        <div class="lightbox-img-holder">
+          <img id="lightbox-img" src="" alt="Enlarged photo">
+        </div>
+        <div class="lightbox-details-bar">
+          <div id="lightbox-title" class="lightbox-title">Site Title</div>
+          <div id="lightbox-caption" class="lightbox-caption">Description caption</div>
+          <div class="lightbox-license-meta">
+            <span id="lightbox-author">Author: Wikimedia Contributor</span>
+            <span>•</span>
+            <span id="lightbox-license">License: CC BY-SA 4.0</span>
+            <span>•</span>
+            <a id="lightbox-source-link" href="#" target="_blank" rel="noopener"
+              style="color: var(--accent-cyan); text-decoration: underline;">View Wikimedia Source</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+
+</html>

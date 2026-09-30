@@ -1,0 +1,808 @@
+{
+  "type": "FeatureCollection",
+  "name": "Rathmines_Surrounds_POI",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "center_point": {
+      "address": "21 Bournville Road, Rathmines NSW 2283",
+      "coordinates": [
+        151.5847,
+        -33.0428
+      ],
+      "lga": "City of Lake Macquarie",
+      "state": "New South Wales, Australia"
+    },
+    "data_sources": [
+      "NSW SEED Environmental Data Portal (seed.nsw.gov.au)",
+      "OpenStreetMap (OSM) Contributors",
+      "Wikimedia Commons (Open Access Media)"
+    ],
+    "license": "CC BY-SA 4.0 / Open Data Commons"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "hub_bournville",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5847,
+          -33.0428
+        ]
+      },
+      "properties": {
+        "name": "21 Bournville Road (Home Base)",
+        "category": "hub",
+        "category_label": "Home Hub",
+        "zone": "zone_5m",
+        "zone_label": "Home (0 mins)",
+        "travel_time_min": 0,
+        "travel_time_label": "Home (0 mins)",
+        "address": "21 Bournville Road, Rathmines NSW 2283",
+        "description": "Our peaceful home base in scenic Rathmines on the western shores of Lake Macquarie. Perfect launchpad for lake adventures, vineyard day-trips, and coastal exploring.",
+        "personal_recommendation": "Welcome home! Step out for an easy morning stroll down to the lakefront, or grab fresh morning coffee from the village bakery just 4 minutes away.",
+        "highlights": [
+          "Home starting hub",
+          "Quiet lakeside residential enclave",
+          "Minutes to Catalina Park & boat ramp",
+          "Quick access to Toronto and M1 motorway"
+        ],
+        "nsw_seed_layer": "Urban Residential & Lake Foreshore Catchment",
+        "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Tranquil parklands and waters of Rathmines, Lake Macquarie",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Rathmines_Park_NSW.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_rathmines_catalina",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5942,
+          -33.0415
+        ]
+      },
+      "properties": {
+        "name": "Rathmines Park & WWII Catalina Base",
+        "category": "heritage",
+        "category_label": "Heritage & Nature",
+        "zone": "zone_5m",
+        "zone_label": "5 mins",
+        "travel_time_min": 5,
+        "travel_time_label": "~5 mins",
+        "address": "Dorrington Rd & Stilling St, Rathmines NSW 2283",
+        "description": "The largest flying boat base in the Southern Hemisphere during WWII. Today it is a stunning 60-hectare recreational park with historic hangars, slipways, playgrounds, and shared paths.",
+        "personal_recommendation": "Our favorite sunrise and evening stroll! Walk down the concrete flying boat slipways into the lake where the giant Catalina seaplanes took off. Great local coffee van often parked on weekends.",
+        "highlights": [
+          "Historic WWII RAAF Hangar & Slipway",
+          "Waterfront walking & cycling tracks",
+          "Public boat ramp & jetty",
+          "Modern children's playground"
+        ],
+        "nsw_seed_layer": "State Heritage Register / Coastal Open Space",
+        "image_url": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Historic RAAF PBY Catalina Flying Boat identical to those stationed at Rathmines",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:PBY_Catalina_flying_boat.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_rathmines_bowling_club",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5915,
+          -33.0375
+        ]
+      },
+      "properties": {
+        "name": "Rathmines Bowling Club",
+        "category": "dining",
+        "category_label": "Dining & Leisure",
+        "zone": "zone_5m",
+        "zone_label": "5 mins",
+        "travel_time_min": 6,
+        "travel_time_label": "~6 mins",
+        "address": "1 Caveside Cl / Stilling St, Rathmines NSW 2283",
+        "description": "Friendly lakeside community bowling club offering relaxed bistro dining, cold craft beers, function facilities, and regular barefoot bowls on tournament-grade greens.",
+        "personal_recommendation": "Great spot for an easy Friday dinner or Sunday barefoot bowls with panoramic sunset views over Catalina Bay. The bistro schnitzels and seafood basket are excellent value.",
+        "highlights": [
+          "Barefoot bowling on manicured greens",
+          "Family-friendly bistro & sports lounge",
+          "Water views across Catalina Bay",
+          "Regular community events"
+        ],
+        "nsw_seed_layer": "Recreation & Community Infrastructure",
+        "image_url": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Lawn bowls on sunny Australian community greens",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Lawn_bowls_match.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_rathmines_bakery_stores",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5873,
+          -33.0401
+        ]
+      },
+      "properties": {
+        "name": "Rathmines Village Bakery & Stores",
+        "category": "essentials",
+        "category_label": "Dining & Essentials",
+        "zone": "zone_5m",
+        "zone_label": "5 mins",
+        "travel_time_min": 4,
+        "travel_time_label": "~4 mins",
+        "address": "Secret Corner / Dorrington Rd, Rathmines NSW 2283",
+        "description": "The bustling heart of Rathmines village featuring the beloved local bakery for fresh sourdough, gourmet meat pies, espresso coffee, alongside the friendly general store and pharmacy.",
+        "personal_recommendation": "Must-visit for morning pies and pastries! The chunky pepper beef pie and fresh almond croissants sell out quickly on weekends.",
+        "highlights": [
+          "Fresh artisan pies & pastries",
+          "Barista espresso coffee & breakfast",
+          "General store essentials & post office",
+          "Local news & supplies"
+        ],
+        "nsw_seed_layer": "Local Commercial Core (B1 Neighbourhood Centre)",
+        "image_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Fresh baked gourmet pastries and artisan bread",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Bakery_pastries_selection.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_toronto_rmyc",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5976,
+          -33.0118
+        ]
+      },
+      "properties": {
+        "name": "Royal Motor Yacht Club (Toronto)",
+        "category": "boating",
+        "category_label": "Dining & Boating",
+        "zone": "zone_15m",
+        "zone_label": "15 mins",
+        "travel_time_min": 12,
+        "travel_time_label": "~12 mins",
+        "address": "6 Arnott Ave, Toronto NSW 2283",
+        "description": "Premier sailing and motor yacht marina club overlooking beautiful Lake Macquarie. Offers contemporary dining at Sails Bistro, waterfront cocktail decks, and secure vessel moorings.",
+        "personal_recommendation": "Book a balcony table around 5:30 PM for golden hour over the marina. Outstanding seafood linguine and cold local craft beer on tap.",
+        "highlights": [
+          "Fine waterfront dining & cocktail lounge",
+          "Deepwater marina berths & slipway",
+          "Live music on the expansive deck",
+          "Panoramic views across the lake"
+        ],
+        "nsw_seed_layer": "Lake Macquarie Aquatic Reserve & Marina Buffer",
+        "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Sailing yachts moored at lakeside marina",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Yachts_in_marina_lake.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_toronto_foreshore",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5947,
+          -33.0125
+        ]
+      },
+      "properties": {
+        "name": "Toronto Foreshore & Town Hub",
+        "category": "shopping",
+        "category_label": "Shopping & Recreation",
+        "zone": "zone_15m",
+        "zone_label": "15 mins",
+        "travel_time_min": 10,
+        "travel_time_label": "~10 mins",
+        "address": "The Boulevarde & Foreshore, Toronto NSW 2283",
+        "description": "The main commercial hub of West Lake Macquarie, with Coles, Woolworths, Aldi, boutique cafes, the Toronto RSL, scenic foreshore parkland, kids play areas, and public jetties.",
+        "highlights": [
+          "Major supermarket retail (Coles, Woolies, Aldi)",
+          "Lakeside cafe & dining strip",
+          "Toronto Foreshore walking paths & jetty",
+          "Public boat ramps"
+        ],
+        "nsw_seed_layer": "Strategic Town Centre & Foreshore Public Reserve",
+        "image_url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Toronto Foreshore park and Lake Macquarie water views",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Toronto_NSW_foreshore.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_toronto_golf_club",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5855,
+          -33.0229
+        ]
+      },
+      "properties": {
+        "name": "Toronto Golf Club (Kilaben Bay)",
+        "category": "leisure",
+        "category_label": "Golf & Leisure",
+        "zone": "zone_15m",
+        "zone_label": "15 mins",
+        "travel_time_min": 10,
+        "travel_time_label": "~10 mins",
+        "address": "Wangary Tce, Kilaben Bay NSW 2283",
+        "description": "Established in 1921, this championship 18-hole golf course is carved into natural bushland with undulating fairways, native wildlife, and a welcoming clubhouse with bistro dining.",
+        "highlights": [
+          "Championship 18-hole par 71 layout",
+          "Abundant native birdlife and kangaroos",
+          "Pro shop, cart hire & practice greens",
+          "Clubhouse bistro and bar"
+        ],
+        "nsw_seed_layer": "Open Space Recreation & Native Bushland Corridor",
+        "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Lush fairways and green landscapes at golf club",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Golf_course_green_landscape.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_dobell_house",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6133,
+          -33.0805
+        ]
+      },
+      "properties": {
+        "name": "Dobell House & Studio (Wangi Wangi)",
+        "category": "heritage",
+        "category_label": "Heritage & Arts",
+        "zone": "zone_15m",
+        "zone_label": "15 mins",
+        "travel_time_min": 15,
+        "travel_time_label": "~15 mins",
+        "address": "47 Dobell Dr, Wangi Wangi NSW 2267",
+        "description": "Heritage-listed home and painting studio of celebrated Australian artist and three-time Archibald Prize winner Sir William Dobell. Features original artwork, memorabilia, and studio artifacts.",
+        "personal_recommendation": "Fascinating look into William Dobell's life and art. The garden overlooking the bay is so serene and full of native birdlife.",
+        "highlights": [
+          "Sir William Dobell's preserved art studio",
+          "Original paintings, prints, and sketchbooks",
+          "Heritage waterfront cottage and gardens",
+          "Guided cultural history tours"
+        ],
+        "nsw_seed_layer": "NSW State Heritage Register (Listing #01662)",
+        "image_url": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Historic Dobell House, home and studio of Sir William Dobell",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Dobell_House_Wangi_Wangi.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_wangi_foreshore",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6166,
+          -33.0782
+        ]
+      },
+      "properties": {
+        "name": "Wangi Wangi Foreshore, Hotel & RSL",
+        "category": "dining",
+        "category_label": "Dining & Village",
+        "zone": "zone_15m",
+        "zone_label": "15 mins",
+        "travel_time_min": 15,
+        "travel_time_label": "~15 mins",
+        "address": "Watkins Rd & Foreshore, Wangi Wangi NSW 2267",
+        "description": "Charming village peninsula known for the iconic historic Wangi Hotel (The Peter Pan), Wangi RSL Club, Wangi Workers Club, waterfront dining, boat ramp, and shaded picnic areas.",
+        "personal_recommendation": "Grab a cold drink at the historic Peter Pan hotel or relax on the lawn by the water. An idyllic spot for a late afternoon stroll.",
+        "highlights": [
+          "Historic 1930s Wangi Hotel pub",
+          "Waterfront decks at Wangi RSL & Workers",
+          "Lakeside shared cycle path",
+          "Boat ramp & jetty facilities"
+        ],
+        "nsw_seed_layer": "Lake Macquarie Riparian & Recreation Zone",
+        "image_url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Wangi Wangi peninsula waters and lush foreshore",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Wangi_Wangi_Point_Lake_Macquarie.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_wangi_point_sca",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6291,
+          -33.0858
+        ]
+      },
+      "properties": {
+        "name": "Wangi Point State Conservation Area",
+        "category": "nature",
+        "category_label": "Parks & Nature",
+        "zone": "zone_15m",
+        "zone_label": "15 mins",
+        "travel_time_min": 17,
+        "travel_time_label": "~17 mins",
+        "address": "Watkins Rd, Wangi Wangi NSW 2267",
+        "description": "A protected national park reserve jutting into Lake Macquarie with ancient angophora trees, littoral rainforest, scenic coastal walking loops, and peaceful swimming coves.",
+        "highlights": [
+          "Protected native woodland & ancient red gums",
+          "Scenic Wangi Point walking track",
+          "Secluded swimming beaches & rocky points",
+          "Rich birdwatching & native wildlife"
+        ],
+        "nsw_seed_layer": "NSW SEED: NPWS State Conservation Area (Wangi Point)",
+        "image_url": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Sculptural Angophora costata (Smooth-barked Apple) common at Wangi Point",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Angophora_costata_Sydney_Red_Gum.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_myuna_bay",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5833,
+          -33.0988
+        ]
+      },
+      "properties": {
+        "name": "Myuna Bay Park & Fishing Outlet",
+        "category": "nature",
+        "category_label": "Parks & Fishing",
+        "zone": "zone_15m",
+        "zone_label": "15 mins",
+        "travel_time_min": 18,
+        "travel_time_label": "~18 mins",
+        "address": "Main Rd, Myuna Bay NSW 2264",
+        "description": "Expansive waterfront parkland famous for its dedicated off-leash dog exercise area, BBQ picnic shelters, and renowned fishing spot at the warm-water canal outlet attracting bream and flathead.",
+        "highlights": [
+          "Large dedicated off-leash dog exercise park",
+          "Famous warm-water canal fishing spot",
+          "Waterfront picnic shelters & gas BBQs",
+          "Peaceful kayak & paddleboard launch"
+        ],
+        "nsw_seed_layer": "Coastal Wetland SEPP & Estuarine Ecosystem",
+        "image_url": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Sunset reflections on peaceful waters of Myuna Bay",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Lake_Macquarie_Sunset_Water.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_warners_bay_speers_point",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6212,
+          -32.9644
+        ]
+      },
+      "properties": {
+        "name": "Warners Bay & Speers Point Park",
+        "category": "nature",
+        "category_label": "Family & Nature",
+        "zone": "zone_30m",
+        "zone_label": "30 mins",
+        "travel_time_min": 30,
+        "travel_time_label": "~30 mins",
+        "address": "The Esplanade, Warners Bay / Speers Point NSW 2284",
+        "description": "Lake Macquarie's flagship recreational destination featuring a 9km paved shared foreshore path, vibrant boutique cafes, and the award-winning Speers Point Variety All-Abilities Playground.",
+        "highlights": [
+          "Speers Point Variety mega-playground & splash pad",
+          "9km scenic Lake Macquarie shared pathway",
+          "Bustling cafe strip & boutique dining",
+          "Public jetty & outdoor art sculptures"
+        ],
+        "nsw_seed_layer": "Regional Recreational Park & Cockle Creek Catchment",
+        "image_url": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Expansive green grounds and lake views at Speers Point Park",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Speers_Point_Park_Lake_Macquarie.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_watagans_boarding_house",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.4168,
+          -33.0031
+        ]
+      },
+      "properties": {
+        "name": "Watagans National Park (Boarding House Dam)",
+        "category": "nature",
+        "category_label": "Rainforest & 4WD",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 40,
+        "travel_time_label": "~40 mins",
+        "address": "Watagan Forest Rd, Watagans NSW 2325",
+        "description": "Majestic mountain wilderness with lush subtropical rainforest, crystal-clear freshwater swimming pools, a spectacular 110m moss-covered rock wall at Boarding House Dam, and 4WD tracks.",
+        "highlights": [
+          "Spectacular 110-metre living moss rock wall",
+          "Freshwater creek walking loop under giant blue gums",
+          "Heaton Lookout & Monkey Face panoramic lookouts",
+          "Adventurous 4WD & mountain bike trails"
+        ],
+        "nsw_seed_layer": "NSW SEED: NPWS National Park & Flora Reserve",
+        "image_url": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Lush moss wall and pristine rainforest along Boarding House Dam walk",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Moss_covered_rock_rainforest.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_glenrock_sca",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.7162,
+          -32.9663
+        ]
+      },
+      "properties": {
+        "name": "Glenrock State Conservation Area",
+        "category": "nature",
+        "category_label": "MTB & Coastal Hikes",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 45,
+        "travel_time_label": "~45 mins",
+        "address": "Burwood Rd, Kahibah / Whitebridge NSW 2290",
+        "description": "The premier coastal mountain biking and bushwalking reserve in the Hunter region. Features 30+ km of sculpted singletrack, coastal rainforest waterfalls, and the Yuelarbah Track down to Glenrock Beach.",
+        "highlights": [
+          "30+ km dedicated MTB singletrack network",
+          "Yuelarbah Track with waterfalls & rainforest",
+          "Secluded Burwood & Dudley coastal beaches",
+          "Rich Awabakal Indigenous cultural heritage"
+        ],
+        "nsw_seed_layer": "NSW SEED: NPWS State Conservation Area (Glenrock)",
+        "image_url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Pristine coastal lagoon and headlands at Glenrock Conservation Area",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Glenrock_Lagoon_NSW.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_merewether_baths",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.7554,
+          -32.9518
+        ]
+      },
+      "properties": {
+        "name": "Merewether Ocean Baths & Beach",
+        "category": "beach",
+        "category_label": "Surf & Ocean Baths",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 45,
+        "travel_time_label": "~45 mins",
+        "address": "Henderson Pde, Merewether NSW 2291",
+        "description": "The largest ocean baths complex in the Southern Hemisphere, opened in 1935. Flanked by the world-famous Merewether National Surfing Reserve and coastal dining pavilion.",
+        "highlights": [
+          "Southern Hemisphere's largest ocean baths",
+          "National Surfing Reserve waves & surf breaks",
+          "Merewether Surfhouse coastal dining & cocktails",
+          "Bathers Way clifftop walking connection"
+        ],
+        "nsw_seed_layer": "NSW Marine Estate & Coastal Open Water Zone",
+        "image_url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Historic Merewether Ocean Baths pavilion and lap pools",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Merewether_Ocean_Baths.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_newcastle_memorial_walk_nobbys",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.7891,
+          -32.9295
+        ]
+      },
+      "properties": {
+        "name": "Newcastle Memorial Walk & Nobbys Head",
+        "category": "heritage",
+        "category_label": "Coastal Walk & Iconic",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 45,
+        "travel_time_label": "~45 mins",
+        "address": "Strzelecki Lookout / Nobbys Rd, Newcastle NSW 2300",
+        "description": "Spectacular 450m clifftop bridge walk honoring the Anzacs with sweeping 360-degree ocean views, connecting down to historic Nobbys Headland, lighthouse, and breakwall.",
+        "highlights": [
+          "450m clifftop suspension bridge & lookout",
+          "Historic 1858 Nobbys Lighthouse & breakwater",
+          "Whale watching vantage point (May-Nov)",
+          "Newcastle Harbour maritime entrance"
+        ],
+        "nsw_seed_layer": "Newcastle Coastal Reserve & Geological Heritage",
+        "image_url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Historic Nobbys Head Lighthouse guarding Newcastle Harbour",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Nobbys_Head_Lighthouse_Newcastle.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_caves_beach_swansea",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6625,
+          -33.1118
+        ]
+      },
+      "properties": {
+        "name": "Caves Beach & Swansea Channel",
+        "category": "beach",
+        "category_label": "Sea Caves & Coastal",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 50,
+        "travel_time_label": "~50 mins",
+        "address": "Caves Beach Rd, Caves Beach NSW 2281",
+        "description": "World-famous sea caves at the southern end of the beach, accessible during low tide. Just minutes from crystal-clear Swansea Channel, known for boating, diving, and pelican feeding.",
+        "personal_recommendation": "Check the tide charts before you go—visit right at dead low tide so you can explore inside all the cavernous sea caves carved into the southern cliffs.",
+        "highlights": [
+          "Spectacular network of sea caves accessible at low tide",
+          "Patrolled surfing beach & ocean pool",
+          "Swansea Channel aqua-blue waterway & fishing",
+          "Caves Coastal Bar & Bungalows dining"
+        ],
+        "nsw_seed_layer": "NSW Coastal Hazard & Intertidal Rocky Shore Zone",
+        "image_url": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Intricate sea caves carved into sandstone cliffs at low tide",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Caves_Beach_NSW_Sea_Caves.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_catherine_hill_bay",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6322,
+          -33.1582
+        ]
+      },
+      "properties": {
+        "name": "Catherine Hill Bay & Coal Pier",
+        "category": "heritage",
+        "category_label": "Heritage & Surf",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 55,
+        "travel_time_label": "~55 mins",
+        "address": "Flowers Dr, Catherine Hill Bay NSW 2281",
+        "description": "A living historic 19th-century coal mining village listed on the State Heritage Register. Famous for its iconic wooden coal loading jetty jutting into turquoise ocean breakers.",
+        "highlights": [
+          "Iconic heritage wooden coal loading jetty",
+          "State Heritage-listed 19th-century miners cottages",
+          "Historic Catho Pub (Catho Hotel)",
+          "Pristine surf beach & Moonee Beach trails"
+        ],
+        "nsw_seed_layer": "NSW State Heritage Register (Listing #01804)",
+        "image_url": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Historic coal loading jetty reaching into the ocean at Catherine Hill Bay",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Catherine_Hill_Bay_Coal_Pier.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_norah_head_lighthouse",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.5744,
+          -33.2825
+        ]
+      },
+      "properties": {
+        "name": "Norah Head Lighthouse & Rockpools",
+        "category": "heritage",
+        "category_label": "Lighthouse & Ocean",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 58,
+        "travel_time_label": "~58 mins",
+        "address": "40 Bush St, Norah Head NSW 2263",
+        "description": "A magnificent operational 1903 lighthouse perched on a dramatic headland. Offers historic tower tours, panoramic 360-degree ocean views, natural rockpools, and coastal walking paths.",
+        "highlights": [
+          "Operational 1903 historic lighthouse tower tours",
+          "Expansive natural rockpools for low-tide exploring",
+          "360-degree clifftop whale watching platform",
+          "Heritage lighthouse keeper quarters"
+        ],
+        "nsw_seed_layer": "Crown Land Reserve & Intertidal Rock Platform",
+        "image_url": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Historic Norah Head Lighthouse standing tall over ocean rocks",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Norah_Head_Lighthouse_NSW.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_redhead_beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.7248,
+          -32.9995
+        ]
+      },
+      "properties": {
+        "name": "Redhead Beach & Shark Tower",
+        "category": "beach",
+        "category_label": "Cliffs & Shark Tower",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 50,
+        "travel_time_label": "~50 mins",
+        "address": "Beach Rd, Redhead NSW 2290",
+        "description": "Dramatic red headland cliffs, rolling surf dunes, and the iconic rustic wooden shark lookout tower standing guard at the water's edge.",
+        "highlights": [
+          "Iconic wooden shark observation lookout tower",
+          "Striking red sandstone headland and sea caves",
+          "Patrolled surf break & boardriding waves",
+          "Redhead coastal boardwalk through littoral rainforest"
+        ],
+        "nsw_seed_layer": "Coastal Bluffs & Littoral Rainforest Buffer",
+        "image_url": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Iconic timber shark observation tower at Redhead Beach",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Redhead_Beach_Shark_Tower.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_major_shopping_motorsport",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.6508,
+          -32.9238
+        ]
+      },
+      "properties": {
+        "name": "Major Retail & Motorsport Hubs (Glendale / Kotara)",
+        "category": "shopping",
+        "category_label": "Shopping & Supercars",
+        "zone": "zone_1h",
+        "zone_label": "1 hour",
+        "travel_time_min": 60,
+        "travel_time_label": "~60 mins",
+        "address": "Stockland Glendale / Kotara / Boolaroo NSW",
+        "description": "The premier retail and entertainment destinations of the region: Costco Boolaroo, Stockland Glendale open-air shopping, Westfield Kotara Rooftop dining & cinema, and Blackrock Motorsport track.",
+        "highlights": [
+          "Costco Wholesale Lake Macquarie (Boolaroo)",
+          "Westfield Kotara & Charlestown Square mega-malls",
+          "Stockland Glendale Event Cinemas & dining",
+          "Motorsport & automotive hubs"
+        ],
+        "nsw_seed_layer": "Strategic Commercial & Regional Employment Corridor",
+        "image_url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Major shopping and lifestyle retail hub",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Modern_shopping_centre_interior.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poi_hunter_valley_wine",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.3065,
+          -32.7932
+        ]
+      },
+      "properties": {
+        "name": "Hunter Valley Wine Region (Pokolbin)",
+        "category": "wine",
+        "category_label": "Vineyards & Cellar Doors",
+        "zone": "zone_2h",
+        "zone_label": "2 hours",
+        "travel_time_min": 75,
+        "travel_time_label": "~75 mins",
+        "address": "Broke Rd / McDonalds Rd, Pokolbin NSW 2320",
+        "description": "Australia's oldest and most renowned wine region. Home to over 150 historic wineries, award-winning Semillon & Shiraz cellar doors, cheese factories, breweries, and hatted vineyard restaurants.",
+        "personal_recommendation": "Start at Audrey Wilkinson for panoramic 360-degree hill views over the vines, then stop at Brokenwood for an afternoon wine tasting and charcuterie board.",
+        "highlights": [
+          "World-class Semillon and Shiraz tastings",
+          "Hatted fine dining restaurants overlooking vines",
+          "Hunter Valley Gardens & artisan chocolate shops",
+          "Scenic hot air ballooning at sunrise"
+        ],
+        "nsw_seed_layer": "NSW SEED: Prime Agricultural Land & Viticultural Heritage",
+        "image_url": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&auto=format&fit=crop&q=80",
+        "image_thumb": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=400&auto=format&fit=crop&q=80",
+        "image_caption": "Rolling green vineyards in the Pokolbin Hunter Valley wine country",
+        "image_author": "Unsplash Curated Collection",
+        "image_license": "Free Access License",
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Hunter_Valley_Vineyard_Landscape.jpg"
+      }
+    }
+  ]
+}

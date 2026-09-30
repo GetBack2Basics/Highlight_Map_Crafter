@@ -1,0 +1,233 @@
+{
+  "name": "SpatialCourse_Crafter - Rathmines & Lake Macquarie Trails",
+  "description": "Curated multi-stop spatial itineraries and courses originating from 21 Bournville Road, Rathmines NSW.",
+  "hub": {
+    "name": "21 Bournville Road, Rathmines",
+    "coordinates": [151.5847, -33.0428]
+  },
+  "courses": [
+    {
+      "id": "course_lake_heritage",
+      "title": "Lake & Flying Boat Heritage Trail",
+      "tagline": "Wartime Catalina history, Dobell's art studio, and tranquil lake foreshores",
+      "badge": "Heritage & Leisure",
+      "theme_color": "#00D2FF",
+      "total_distance_km": 18.5,
+      "total_drive_time_min": 35,
+      "recommended_duration": "Half Day (~3–4 hrs)",
+      "ideal_for": "History buffs, art lovers, relaxed family strolls",
+      "route_coordinates": [
+        [151.5847, -33.0428],
+        [151.5942, -33.0415],
+        [151.5915, -33.0375],
+        [151.6166, -33.0782],
+        [151.6133, -33.0805],
+        [151.6291, -33.0858]
+      ],
+      "stops": [
+        {
+          "step": 1,
+          "poi_id": "hub_bournville",
+          "name": "Start: 21 Bournville Road",
+          "coordinates": [151.5847, -33.0428],
+          "leg_drive_min": 0,
+          "instruction": "Depart 21 Bournville Rd and head east down Dorrington Road towards the lakeshore."
+        },
+        {
+          "step": 2,
+          "poi_id": "poi_rathmines_catalina",
+          "name": "Rathmines Park & WWII Catalina Flying Boat Base",
+          "coordinates": [151.5942, -33.0415],
+          "leg_drive_min": 5,
+          "instruction": "Explore the historic WWII flying boat hangars, memorial slipway, and waterfront walkway."
+        },
+        {
+          "step": 3,
+          "poi_id": "poi_rathmines_bowling_club",
+          "name": "Rathmines Bowling Club (Lunch & Barefoot Bowls)",
+          "coordinates": [151.5915, -33.0375],
+          "leg_drive_min": 3,
+          "instruction": "Stop for casual bistro dining overlooking Catalina Bay or roll a round of barefoot bowls."
+        },
+        {
+          "step": 4,
+          "poi_id": "poi_wangi_foreshore",
+          "name": "Wangi Wangi Foreshore Peninsula",
+          "coordinates": [151.6166, -33.0782],
+          "leg_drive_min": 12,
+          "instruction": "Drive around the western bay to Wangi peninsula for coffee or a waterfront stroll."
+        },
+        {
+          "step": 5,
+          "poi_id": "poi_dobell_house",
+          "name": "Dobell House & Historic Studio",
+          "coordinates": [151.6133, -33.0805],
+          "leg_drive_min": 2,
+          "instruction": "Tour Sir William Dobell's preserved heritage cottage, painting studio, and original artworks."
+        },
+        {
+          "step": 6,
+          "poi_id": "poi_wangi_point_sca",
+          "name": "Wangi Point State Conservation Area (Final Sunset Stop)",
+          "coordinates": [151.6291, -33.0858],
+          "leg_drive_min": 4,
+          "instruction": "Conclude with an evening stroll through the red gum forest to Wangi Point lookout."
+        }
+      ]
+    },
+    {
+      "id": "course_coastal_caves",
+      "title": "Coastal Bluffs & Sea Caves Safari",
+      "tagline": "Dramatic red cliffs, historic mining jetty, low-tide caves, and 1903 lighthouse",
+      "badge": "Coastal Adventure",
+      "theme_color": "#FF7E40",
+      "total_distance_km": 68.2,
+      "total_drive_time_min": 85,
+      "recommended_duration": "Full Day (~5–6 hrs)",
+      "ideal_for": "Beachcombers, photographers, lighthouse enthusiasts",
+      "route_coordinates": [
+        [151.5847, -33.0428],
+        [151.7248, -32.9995],
+        [151.6625, -33.1118],
+        [151.6322, -33.1582],
+        [151.5744, -33.2825]
+      ],
+      "stops": [
+        {
+          "step": 1,
+          "poi_id": "hub_bournville",
+          "name": "Start: 21 Bournville Road",
+          "coordinates": [151.5847, -33.0428],
+          "leg_drive_min": 0,
+          "instruction": "Head northeast via Toronto and the Pacific Highway towards the coastal coastline."
+        },
+        {
+          "step": 2,
+          "poi_id": "poi_redhead_beach",
+          "name": "Redhead Beach & Wooden Shark Tower",
+          "coordinates": [151.7248, -32.9995],
+          "leg_drive_min": 45,
+          "instruction": "Photograph the iconic timber shark tower and dramatic red sandstone cliffs."
+        },
+        {
+          "step": 3,
+          "poi_id": "poi_caves_beach_swansea",
+          "name": "Caves Beach Sea Caves & Swansea Channel",
+          "coordinates": [151.6625, -33.1118],
+          "leg_drive_min": 20,
+          "instruction": "Time your visit for low tide to explore the spectacular network of carved sea caves."
+        },
+        {
+          "step": 4,
+          "poi_id": "poi_catherine_hill_bay",
+          "name": "Catherine Hill Bay & Historic Coal Pier",
+          "coordinates": [151.6322, -33.1582],
+          "leg_drive_min": 15,
+          "instruction": "Walk the historic mining village and view the dramatic ocean coal loading jetty."
+        },
+        {
+          "step": 5,
+          "poi_id": "poi_norah_head_lighthouse",
+          "name": "Norah Head 1903 Lighthouse & Rockpools",
+          "coordinates": [151.5744, -33.2825],
+          "leg_drive_min": 22,
+          "instruction": "Ascend the headland for lighthouse tours, rockpool safaris, and whale watching."
+        }
+      ]
+    },
+    {
+      "id": "course_hunter_wine",
+      "title": "Gourmet & Hunter Valley Wine Country Escape",
+      "tagline": "Lakeside yacht club lunch, scenic country drive, and world-class Shiraz & Semillon",
+      "badge": "Wine & Gastronomy",
+      "theme_color": "#A855F7",
+      "total_distance_km": 94.0,
+      "total_drive_time_min": 90,
+      "recommended_duration": "Full Day (~6–8 hrs)",
+      "ideal_for": "Wine enthusiasts, foodies, celebratory days out",
+      "route_coordinates": [
+        [151.5847, -33.0428],
+        [151.5976, -33.0118],
+        [151.5855, -33.0229],
+        [151.3065, -32.7932]
+      ],
+      "stops": [
+        {
+          "step": 1,
+          "poi_id": "hub_bournville",
+          "name": "Start: 21 Bournville Road",
+          "coordinates": [151.5847, -33.0428],
+          "leg_drive_min": 0,
+          "instruction": "Head north along the western lake route towards Toronto."
+        },
+        {
+          "step": 2,
+          "poi_id": "poi_toronto_rmyc",
+          "name": "Royal Motor Yacht Club (Toronto Marina Coffee & Vista)",
+          "coordinates": [151.5976, -33.0118],
+          "leg_drive_min": 12,
+          "instruction": "Begin the journey with morning espresso overlooking the sailing yachts at Toronto Marina."
+        },
+        {
+          "step": 3,
+          "poi_id": "poi_hunter_valley_wine",
+          "name": "Hunter Valley Wine Country (Pokolbin & Lovedale)",
+          "coordinates": [151.3065, -32.7932],
+          "leg_drive_min": 65,
+          "instruction": "Arrive in Pokolbin for vineyard tastings, cheese pairings, and cellar door masterclasses."
+        }
+      ]
+    },
+    {
+      "id": "course_rainforest_mtb",
+      "title": "Rainforest Creeks & Singletrack Trail Quest",
+      "tagline": "Ancient moss walls, Boarding House Dam freshwater swimming, and Glenrock MTB trails",
+      "badge": "Active & Wilderness",
+      "theme_color": "#10B981",
+      "total_distance_km": 72.0,
+      "total_drive_time_min": 80,
+      "recommended_duration": "Full Day (~5–6 hrs)",
+      "ideal_for": "Mountain bikers, trail runners, wilderness adventurers",
+      "route_coordinates": [
+        [151.5847, -33.0428],
+        [151.4168, -33.0031],
+        [151.6212, -32.9644],
+        [151.7162, -32.9663]
+      ],
+      "stops": [
+        {
+          "step": 1,
+          "poi_id": "hub_bournville",
+          "name": "Start: 21 Bournville Road",
+          "coordinates": [151.5847, -33.0428],
+          "leg_drive_min": 0,
+          "instruction": "Head west into the rugged Watagan mountain ranges via Freemans Waterhole."
+        },
+        {
+          "step": 2,
+          "poi_id": "poi_watagans_boarding_house",
+          "name": "Watagans NP: Boarding House Dam & 110m Moss Wall",
+          "coordinates": [151.4168, -33.0031],
+          "leg_drive_min": 40,
+          "instruction": "Hike the lush rainforest loop to the famous 110-metre moss-covered rock wall."
+        },
+        {
+          "step": 3,
+          "poi_id": "poi_warners_bay_speers_point",
+          "name": "Speers Point Park & Warners Bay (Post-Hike Refuel)",
+          "coordinates": [151.6212, -32.9644],
+          "leg_drive_min": 35,
+          "instruction": "Recharge with lakeside gourmet lunch along the lively Warners Bay cafe promenade."
+        },
+        {
+          "step": 4,
+          "poi_id": "poi_glenrock_sca",
+          "name": "Glenrock State Conservation Area (Singletrack Trails)",
+          "coordinates": [151.7162, -32.9663],
+          "leg_drive_min": 18,
+          "instruction": "Tackle the world-class coastal singletrack MTB trails or bushwalk down to Glenrock Beach."
+        }
+      ]
+    }
+  ]
+}
