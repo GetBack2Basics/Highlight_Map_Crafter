@@ -1624,3 +1624,244 @@ body.admin-drag-active .custom-map-marker:active {
 }
 
 
+
+
+/* ==============================================================================
+   Enhancements: Multi-Photo Carousel, Lightbox Stage, & Vector Feature Popups
+   ============================================================================== */
+
+/* Drawer Photo Carousel Controls */
+.drawer-image-wrap {
+  position: relative;
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(0, 210, 255, 0.9);
+  color: #0f172a;
+  border-color: #00d2ff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 210, 255, 0.4);
+}
+
+.carousel-nav-btn.prev {
+  left: 8px;
+}
+
+.carousel-nav-btn.next {
+  right: 8px;
+}
+
+.carousel-counter-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Lightbox Stage & Navigation Buttons */
+.lightbox-img-holder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.lightbox-nav-btn:hover {
+  background: #00d2ff;
+  color: #0f172a;
+  border-color: #00d2ff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 210, 255, 0.5);
+}
+
+.lightbox-nav-btn.prev {
+  left: 12px;
+}
+
+.lightbox-nav-btn.next {
+  right: 12px;
+}
+
+.lightbox-counter-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  background: rgba(0, 210, 255, 0.15);
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* Vector Feature Interactive Popups (Courses, Isochrones, KML overlays) */
+.maplibregl-popup.crafter-vector-popup .maplibregl-popup-content {
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: #f8fafc;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 210, 255, 0.2);
+}
+
+.maplibregl-popup.crafter-vector-popup .maplibregl-popup-close-button {
+  color: #94a3b8;
+  font-size: 16px;
+  padding: 4px 8px;
+  right: 4px;
+  top: 4px;
+}
+
+.maplibregl-popup.crafter-vector-popup .maplibregl-popup-close-button:hover {
+  color: #fff;
+  background: transparent;
+}
+
+.vector-feature-popup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 290px;
+}
+
+.vector-popup-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vector-popup-badge {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.vector-popup-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.vector-popup-desc {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+  max-height: 85px;
+  overflow-y: auto;
+}
+
+.vector-attrs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  margin-top: 4px;
+}
+
+.vector-attrs-table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vector-attrs-table tr:last-child {
+  border-bottom: none;
+}
+
+.vector-attrs-table td:first-child {
+  color: #94a3b8;
+  padding: 3px 0;
+  font-weight: 500;
+}
+
+.vector-attrs-table td:last-child {
+  color: #f1f5f9;
+  text-align: right;
+  padding: 3px 0;
+  font-weight: 600;
+}
+
+.vector-popup-action-btn {
+  margin-top: 6px;
+  width: 100%;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.vector-popup-action-btn:hover {
+  background: linear-gradient(135deg, #0369a1, #075985);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+  transform: translateY(-1px);
+}

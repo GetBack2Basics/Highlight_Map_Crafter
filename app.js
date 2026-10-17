@@ -23,6 +23,8 @@ let showDistanceRings = true;
 let markersMap = new Map();
 let isAdminDragEnabled = false;
 let isRelocatingActivePoi = false;
+let currentDrawerPhotos = [];
+let currentDrawerPhotoIdx = 0;
 
 // Toast Notification Helper
 function showToast(message, duration = 3200) {
@@ -120,6 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function initMap() {
   map = new maplibregl.Map({
     container: 'map',
+    preserveDrawingBuffer: true, // Enables high-res canvas JPG export
     style: {
       version: 8,
       sources: {
@@ -150,6 +153,7 @@ function initMap() {
     addIsochronesLayer();
     addCourseRouteLayer();
     renderMarkers();
+    setupVectorClickEngine();
   });
 }
 
@@ -733,8 +737,23 @@ function selectPoi(feature) {
     curve: 1.4
   });
 
-  // Populate Right Drawer
-  document.getElementById('drawer-img').src = props.image_url || 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rathmines_Park_NSW.jpg/800px-Rathmines_Park_NSW.jpg';
+  // Populate Right Drawer with Multi-Photo Carousel Support
+  let photos = [];
+  if (Array.isArray(props.photos) && props.photos.length > 0) {
+    photos = props.photos;
+  } else if (props.image_url) {
+    photos = [{
+      thumb_url: props.image_url,
+      full_url: props.image_url,
+      caption: props.name,
+      credit: props.image_author || 'Community Contributor',
+      license: props.image_license || 'CC BY-SA',
+      credit_url: props.image_source_page || ''
+    }];
+  }
+  currentDrawerPhotos = photos;
+  currentDrawerPhotoIdx = 0;
+  updateDrawerPhoto();
   document.getElementById('drawer-title').textContent = props.name;
   document.getElementById('drawer-address').textContent = props.address || '';
   document.getElementById('drawer-time-badge').textContent = props.travel_time_label || '~15 mins';
@@ -1285,6 +1304,42 @@ function setupEventListeners() {
   // Export GeoJSON
   document.getElementById('btn-export-geojson').addEventListener('click', exportUpdatedGeoJson);
 
+  // Vector Overlay (KML/GeoJSON) File Picker
+  const btnLoadKml = document.getElementById('btn-load-kml');
+  const inputKml = document.getElementById('input-kml-file');
+  if (btnLoadKml && inputKml) {
+    btnLoadKml.addEventListener('click', () => inputKml.click());
+    inputKml.addEventListener('change', handleVectorFileSelect);
+  }
+
+  // Export Map Canvas Plate (JPG)
+  const btnExportJpg = document.getElementById('btn-export-map-jpg');
+  if (btnExportJpg) {
+    btnExportJpg.addEventListener('click', exportMapPlateJpg);
+  }
+
+  // Drawer Photo Carousel Controls
+  const prevPhotoBtn = document.getElementById('drawer-photo-prev');
+  const nextPhotoBtn = document.getElementById('drawer-photo-next');
+  if (prevPhotoBtn) prevPhotoBtn.addEventListener('click', (e) => navigateDrawerPhoto(-1, e));
+  if (nextPhotoBtn) nextPhotoBtn.addEventListener('click', (e) => navigateDrawerPhoto(1, e));
+
+  // Lightbox Stage Navigation Controls
+  const lightboxPrevBtn = document.getElementById('lightbox-btn-prev');
+  const lightboxNextBtn = document.getElementById('lightbox-btn-next');
+  if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateLightboxModal(-1); });
+  if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateLightboxModal(1); });
+
+  // Keyboard navigation for Lightbox and Carousel
+  window.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('lightbox-modal');
+    if (modal && modal.classList.contains('active')) {
+      if (e.key === 'ArrowLeft') navigateLightboxModal(-1);
+      else if (e.key === 'ArrowRight') navigateLightboxModal(1);
+      else if (e.key === 'Escape') modal.classList.remove('active');
+    }
+  });
+
   // Lightbox Triggers
   document.getElementById('drawer-img').addEventListener('click', () => {
     if (!selectedPoi && !activeCourse) return;
@@ -1315,3 +1370,469 @@ function setupEventListeners() {
   });
 }
 
+
+
+// ==============================================================================
+// 13. Multi-Photo Carousel & Lightbox Engine
+// ==============================================================================
+
+function updateDrawerPhoto() {
+  const imgEl = document.getElementById('drawer-img');
+  const counterEl = document.getElementById('drawer-photo-counter');
+  const prevBtn = document.getElementById('drawer-photo-prev');
+  const nextBtn = document.getElementById('drawer-photo-next');
+  const authorEl = document.getElementById('drawer-credit-author');
+  const licenseEl = document.getElementById('drawer-credit-license');
+
+  if (!currentDrawerPhotos || currentDrawerPhotos.length === 0) {
+    if (imgEl) imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rathmines_Park_NSW.jpg/800px-Rathmines_Park_NSW.jpg';
+    if (counterEl) counterEl.style.display = 'none';
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+    return;
+  }
+
+  const p = currentDrawerPhotos[currentDrawerPhotoIdx];
+  if (imgEl) imgEl.src = p.thumb_url || p.full_url || '';
+  if (counterEl) {
+    counterEl.textContent = `${currentDrawerPhotoIdx + 1} / ${currentDrawerPhotos.length}`;
+    counterEl.style.display = currentDrawerPhotos.length > 1 ? 'block' : 'none';
+  }
+  if (prevBtn) prevBtn.style.display = currentDrawerPhotos.length > 1 ? 'flex' : 'none';
+  if (nextBtn) nextBtn.style.display = currentDrawerPhotos.length > 1 ? 'flex' : 'none';
+
+  if (authorEl) authorEl.textContent = `Author: ${p.credit || 'Contributor'}`;
+  if (licenseEl) licenseEl.textContent = p.license || 'CC BY-SA';
+}
+
+function navigateDrawerPhoto(delta, event) {
+  if (event) event.stopPropagation();
+  if (!currentDrawerPhotos || currentDrawerPhotos.length <= 1) return;
+  currentDrawerPhotoIdx += delta;
+  if (currentDrawerPhotoIdx < 0) currentDrawerPhotoIdx = currentDrawerPhotos.length - 1;
+  if (currentDrawerPhotoIdx >= currentDrawerPhotos.length) currentDrawerPhotoIdx = 0;
+  updateDrawerPhoto();
+  if (document.getElementById('lightbox-modal').classList.contains('active')) {
+    updateLightboxModal();
+  }
+}
+
+function openLightboxModal() {
+  if (!selectedPoi && !activeCourse) return;
+  updateLightboxModal();
+  document.getElementById('lightbox-modal').classList.add('active');
+}
+
+function updateLightboxModal() {
+  const modal = document.getElementById('lightbox-modal');
+  const imgEl = document.getElementById('lightbox-img');
+  const titleEl = document.getElementById('lightbox-title');
+  const captionEl = document.getElementById('lightbox-caption');
+  const authorEl = document.getElementById('lightbox-author');
+  const licenseEl = document.getElementById('lightbox-license');
+  const sourceLinkEl = document.getElementById('lightbox-source-link');
+  const counterEl = document.getElementById('lightbox-counter');
+  const prevBtn = document.getElementById('lightbox-btn-prev');
+  const nextBtn = document.getElementById('lightbox-btn-next');
+
+  const p = currentDrawerPhotos && currentDrawerPhotos.length > 0 ? currentDrawerPhotos[currentDrawerPhotoIdx] : null;
+  const title = selectedPoi ? selectedPoi.properties.name : (activeCourse ? activeCourse.title : 'Photo View');
+
+  if (imgEl) imgEl.src = p ? (p.full_url || p.thumb_url) : (document.getElementById('drawer-img')?.src || '');
+  if (titleEl) titleEl.textContent = title;
+  if (captionEl) {
+    captionEl.textContent = p?.caption || (selectedPoi?.properties.description || '');
+  }
+  if (authorEl) authorEl.textContent = `Author: ${p?.credit || 'Contributor'}`;
+  if (licenseEl) licenseEl.textContent = p?.license || 'CC BY-SA';
+  if (sourceLinkEl) sourceLinkEl.href = p?.credit_url || '#';
+
+  if (counterEl) {
+    counterEl.textContent = `${currentDrawerPhotoIdx + 1} / ${Math.max(1, currentDrawerPhotos.length)}`;
+    counterEl.style.display = currentDrawerPhotos.length > 1 ? 'inline-block' : 'none';
+  }
+  if (prevBtn) prevBtn.style.display = currentDrawerPhotos.length > 1 ? 'flex' : 'none';
+  if (nextBtn) nextBtn.style.display = currentDrawerPhotos.length > 1 ? 'flex' : 'none';
+}
+
+function navigateLightboxModal(delta) {
+  navigateDrawerPhoto(delta);
+  updateLightboxModal();
+}
+
+// ==============================================================================
+// 14. Multi-Geometry Vector Hitbox & Click Engine (8px Tolerance)
+// ==============================================================================
+
+function setupVectorClickEngine() {
+  const TOLERANCE_PX = 8;
+
+  // 1. Hover Effect: Change cursor to pointer over interactive lines and polygons
+  map.on('mousemove', (e) => {
+    if (e.originalEvent && e.originalEvent.target.closest('.poi-marker-pin')) return;
+
+    const interactiveLayers = [
+      'course-route-line',
+      'course-route-glow',
+      'isochrones-line',
+      'overlay-kml-points',
+      'overlay-kml-lines',
+      'overlay-kml-fills'
+    ].filter(id => {
+      if (!map.getLayer(id)) return false;
+      const vis = map.getLayoutProperty(id, 'visibility');
+      return vis !== 'none';
+    });
+
+    if (interactiveLayers.length === 0) {
+      map.getCanvas().style.cursor = '';
+      return;
+    }
+
+    const bbox = [
+      [e.point.x - TOLERANCE_PX, e.point.y - TOLERANCE_PX],
+      [e.point.x + TOLERANCE_PX, e.point.y + TOLERANCE_PX]
+    ];
+    const feats = map.queryRenderedFeatures(bbox, { layers: interactiveLayers });
+    map.getCanvas().style.cursor = (feats && feats.length > 0) ? 'pointer' : '';
+  });
+
+  // 2. Click Handler: Multi-priority resolution (Points -> Lines -> Polygons)
+  map.on('click', (e) => {
+    if (e.originalEvent && (
+      e.originalEvent.target.closest('.poi-marker-pin') ||
+      e.originalEvent.target.closest('.maplibregl-popup') ||
+      e.originalEvent.target.closest('.detail-drawer')
+    )) {
+      return;
+    }
+
+    const interactiveLayers = [
+      'course-route-line',
+      'course-route-glow',
+      'isochrones-line',
+      'overlay-kml-points',
+      'overlay-kml-lines',
+      'overlay-kml-fills'
+    ].filter(id => {
+      if (!map.getLayer(id)) return false;
+      const vis = map.getLayoutProperty(id, 'visibility');
+      return vis !== 'none';
+    });
+
+    if (interactiveLayers.length === 0) return;
+
+    const bbox = [
+      [e.point.x - TOLERANCE_PX, e.point.y - TOLERANCE_PX],
+      [e.point.x + TOLERANCE_PX, e.point.y + TOLERANCE_PX]
+    ];
+
+    // Priority 1: Points (Overlay points)
+    let candidates = map.queryRenderedFeatures(bbox, {
+      layers: interactiveLayers.filter(l => l.includes('point'))
+    });
+
+    // Priority 2: Lines (Courses, Isochrones, KML lines)
+    if (!candidates || candidates.length === 0) {
+      candidates = map.queryRenderedFeatures(bbox, {
+        layers: interactiveLayers.filter(l => l.includes('line') || l.includes('glow'))
+      });
+    }
+
+    // Priority 3: Polygons (KML fills)
+    if (!candidates || candidates.length === 0) {
+      candidates = map.queryRenderedFeatures(e.point, {
+        layers: interactiveLayers.filter(l => l.includes('fill'))
+      });
+    }
+
+    if (!candidates || candidates.length === 0) return;
+
+    const feat = candidates[0];
+    const layerId = feat.layer.id;
+
+    if (layerId.startsWith('overlay-kml-')) {
+      showKMLFeaturePopup(feat, e.lngLat);
+    } else if (layerId.startsWith('course-route-')) {
+      showCourseFeaturePopup(feat, e.lngLat);
+    } else if (layerId.startsWith('isochrones-')) {
+      showIsochroneFeaturePopup(feat, e.lngLat);
+    }
+  });
+}
+
+function showCourseFeaturePopup(feat, lngLat) {
+  if (!activeCourse) return;
+  const course = activeCourse;
+
+  const html = `
+    <div class="vector-feature-popup-card">
+      <div class="vector-popup-header">
+        <span class="vector-popup-badge" style="background: ${course.theme_color};">🚀 Spatial Course</span>
+        <h4 class="vector-popup-title">${escapeHtml(course.title)}</h4>
+      </div>
+      <div class="vector-popup-desc">${escapeHtml(course.tagline)}</div>
+      <table class="vector-attrs-table">
+        <tbody>
+          <tr><td>Stops:</td><td>${course.stops.length} sequenced locations</td></tr>
+          <tr><td>Distance:</td><td>${course.total_distance_km} km</td></tr>
+          <tr><td>Drive Time:</td><td>~${course.total_drive_time_min} mins</td></tr>
+          <tr><td>Duration:</td><td>${course.recommended_duration}</td></tr>
+        </tbody>
+      </table>
+      <button class="vector-popup-action-btn" onclick="document.getElementById('detail-drawer').classList.add('open')">
+        📋 Open Course Guide & Stops
+      </button>
+    </div>
+  `;
+
+  new maplibregl.Popup({ offset: 12, maxWidth: '300px', className: 'crafter-vector-popup', closeOnClick: true })
+    .setLngLat(lngLat)
+    .setHTML(html)
+    .addTo(map);
+}
+
+function showIsochroneFeaturePopup(feat, lngLat) {
+  const props = feat.properties || {};
+  const mins = props.time_minutes || 15;
+
+  const html = `
+    <div class="vector-feature-popup-card">
+      <div class="vector-popup-header">
+        <span class="vector-popup-badge" style="background: #3b82f6;">⏱️ Travel Isochrone</span>
+        <h4 class="vector-popup-title">${mins}-Minute Drive Boundary</h4>
+      </div>
+      <div class="vector-popup-desc">
+        Calculated road-network polygon from 21 Bournville Road via Valhalla routing & OpenStreetMap.
+      </div>
+      <table class="vector-attrs-table">
+        <tbody>
+          <tr><td>Horizon:</td><td>${mins} minutes drive time</td></tr>
+          <tr><td>Origin:</td><td>21 Bournville Rd, Rathmines</td></tr>
+          <tr><td>Network:</td><td>Real NSW roads & bridges</td></tr>
+        </tbody>
+      </table>
+      <button class="vector-popup-action-btn" onclick="filterByZone('zone_${mins}m')">
+        🎯 Filter Sites in this Zone
+      </button>
+    </div>
+  `;
+
+  new maplibregl.Popup({ offset: 12, maxWidth: '300px', className: 'crafter-vector-popup', closeOnClick: true })
+    .setLngLat(lngLat)
+    .setHTML(html)
+    .addTo(map);
+}
+
+function filterByZone(zoneKey) {
+  const btn = document.querySelector(`.ring-filter-btn[data-zone="${zoneKey}"]`);
+  if (btn) btn.click();
+}
+
+function showKMLFeaturePopup(feat, lngLat) {
+  const props = feat.properties || {};
+  const geomType = feat.geometry ? feat.geometry.type : 'Feature';
+
+  let badgeLabel = '📍 KML Place';
+  let badgeColor = '#10b981';
+
+  if (geomType.includes('LineString')) {
+    badgeLabel = '🛣️ Vector Route / Path';
+    badgeColor = '#f59e0b';
+  } else if (geomType.includes('Polygon')) {
+    badgeLabel = '🗺️ Vector Boundary / Area';
+    badgeColor = '#0284c7';
+  }
+
+  const title = props.name || props.title || 'Vector Feature';
+  const desc = props.description || '';
+
+  const metaRows = [];
+  if (geomType === 'Point' && feat.geometry.coordinates) {
+    const [pLon, pLat] = feat.geometry.coordinates;
+    metaRows.push(`<tr><td>Coordinates:</td><td>${pLat.toFixed(4)}, ${pLon.toFixed(4)}</td></tr>`);
+  } else if (geomType.includes('LineString') && feat.geometry.coordinates) {
+    metaRows.push(`<tr><td>Waypoints:</td><td>${feat.geometry.coordinates.length} coordinates</td></tr>`);
+  } else if (geomType.includes('Polygon') && feat.geometry.coordinates) {
+    const ring = feat.geometry.coordinates[0] || [];
+    metaRows.push(`<tr><td>Boundary:</td><td>${ring.length} vertices</td></tr>`);
+  }
+
+  const skipKeys = new Set(['name', 'description']);
+  for (const [k, v] of Object.entries(props)) {
+    if (skipKeys.has(k) || v === null || v === undefined || v === '') continue;
+    const cleanKey = k.replace(/[_-]/g, ' ');
+    metaRows.push(`<tr><td>${escapeHtml(cleanKey)}:</td><td>${escapeHtml(String(v))}</td></tr>`);
+  }
+
+  const html = `
+    <div class="vector-feature-popup-card">
+      <div class="vector-popup-header">
+        <span class="vector-popup-badge" style="background: ${badgeColor};">${badgeLabel}</span>
+        <h4 class="vector-popup-title">${escapeHtml(title)}</h4>
+      </div>
+      ${desc ? `<div class="vector-popup-desc">${escapeHtml(desc)}</div>` : ''}
+      <table class="vector-attrs-table">
+        <tbody>
+          ${metaRows.slice(0, 5).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  new maplibregl.Popup({ offset: 12, maxWidth: '310px', className: 'crafter-vector-popup', closeOnClick: true })
+    .setLngLat(lngLat)
+    .setHTML(html)
+    .addTo(map);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ==============================================================================
+// 15. Dynamic Vector Overlay Streaming (KML & GeoJSON with @tmcw/togeojson)
+// ==============================================================================
+
+async function handleVectorFileSelect(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+
+  const fileName = file.name;
+  showToast(`📁 Loading vector file "${fileName}"…`, 2500);
+
+  try {
+    const text = await file.text();
+    let geojson = null;
+
+    if (fileName.toLowerCase().endsWith('.kml')) {
+      if (!window.toGeoJSON || !window.toGeoJSON.kml) {
+        showToast('⚠️ toGeoJSON parser library not loaded', 3500);
+        return;
+      }
+      const dom = new DOMParser().parseFromString(text, 'text/xml');
+      geojson = window.toGeoJSON.kml(dom);
+    } else {
+      geojson = JSON.parse(text);
+    }
+
+    renderVectorOverlay(geojson, fileName);
+  } catch (err) {
+    console.error('Vector parse error:', err);
+    showToast(`⚠️ Failed to parse vector: ${err.message}`, 4000);
+  } finally {
+    event.target.value = '';
+  }
+}
+
+function renderVectorOverlay(geojson, label = 'Vector Overlay') {
+  if (!map || !geojson || !geojson.features) return;
+
+  ['overlay-kml-fills', 'overlay-kml-lines', 'overlay-kml-points'].forEach(id => {
+    if (map.getLayer(id)) map.removeLayer(id);
+  });
+  if (map.getSource('overlay-kml-source')) map.removeSource('overlay-kml-source');
+
+  map.addSource('overlay-kml-source', {
+    type: 'geojson',
+    data: geojson
+  });
+
+  // 1. Fills
+  map.addLayer({
+    id: 'overlay-kml-fills',
+    type: 'fill',
+    source: 'overlay-kml-source',
+    filter: ['==', '$type', 'Polygon'],
+    paint: {
+      'fill-color': '#0284c7',
+      'fill-opacity': 0.25
+    }
+  });
+
+  // 2. Lines
+  map.addLayer({
+    id: 'overlay-kml-lines',
+    type: 'line',
+    source: 'overlay-kml-source',
+    filter: ['==', '$type', 'LineString'],
+    paint: {
+      'line-color': '#f59e0b',
+      'line-width': 3.5,
+      'line-dasharray': [3, 2]
+    }
+  });
+
+  // 3. Points
+  map.addLayer({
+    id: 'overlay-kml-points',
+    type: 'circle',
+    source: 'overlay-kml-source',
+    filter: ['==', '$type', 'Point'],
+    paint: {
+      'circle-radius': 6,
+      'circle-color': '#10b981',
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#ffffff'
+    }
+  });
+
+  // Compute bounding box
+  const coords = [];
+  geojson.features.forEach(f => {
+    if (!f.geometry) return;
+    if (f.geometry.type === 'Point') {
+      coords.push(f.geometry.coordinates);
+    } else if (f.geometry.type === 'LineString') {
+      f.geometry.coordinates.forEach(c => coords.push(c));
+    } else if (f.geometry.type === 'Polygon') {
+      f.geometry.coordinates[0]?.forEach(c => coords.push(c));
+    }
+  });
+
+  if (coords.length > 0) {
+    const lons = coords.map(c => c[0]);
+    const lats = coords.map(c => c[1]);
+    map.fitBounds([
+      [Math.min(...lons), Math.min(...lats)],
+      [Math.max(...lons), Math.max(...lats)]
+    ], { padding: 60, duration: 1200 });
+  }
+
+  showToast(`✅ Overlaid ${geojson.features.length} vector features from ${label}`, 3500);
+}
+
+// ==============================================================================
+// 16. High-Resolution Canvas Map Plate Exporter (JPG)
+// ==============================================================================
+
+function exportMapPlateJpg() {
+  if (!map) return;
+  showToast('📸 Rendering high-resolution canvas map plate…', 2000);
+  try {
+    map.getCanvas().toBlob((blob) => {
+      if (!blob) {
+        showToast('⚠️ Canvas export unavailable', 3000);
+        return;
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+      a.href = url;
+      a.download = `highlight_map_plate_${currentBasemap}_${timestamp}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('✅ High-resolution map plate downloaded!');
+    }, 'image/jpeg', 0.94);
+  } catch (err) {
+    console.error('Export error:', err);
+    showToast(`⚠️ Export failed: ${err.message}`, 4000);
+  }
+}

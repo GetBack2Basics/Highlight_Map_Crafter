@@ -60,6 +60,10 @@ graph TD
 | **🛰️ Multi-Basemap Engine** | Seamless switcher between OpenStreetMap Standard, Topo / Terrain (OpenTopoMap), ESRI World Imagery, and CARTO Voyager. |
 | **🔍 Category Filters & Search** | Instant client-side filtering for Dining, Coffee, Waterfront Parks, Heritage, Boating, and Hidden Gems. |
 | **⚡ Serverless & High Performance** | Zero backend servers required; serves pre-computed GeoJSON and static assets directly via Google Cloud Storage or any CDN. |
+| **🎯 Multi-Geometry Hitbox Engine** | 8px bounding-box click tolerance for interactive Course Routes (LineString) and Isochrones (Polygon/Line), rendering geometry-specific popups with waypoints and distance stats. |
+| **🖼️ Multi-Photo Carousel & Lightbox** | Support for multiple verified photographs per site with responsive carousel controls (`‹` and `›`), license badges, and fullscreen modal lightbox with keyboard arrow navigation. |
+| **📁 Dynamic Vector Streaming (KML/GeoJSON)** | On-demand client-side vector track and boundary streaming via `@tmcw/togeojson` with auto-bounding box fitting. |
+| **📸 High-Resolution Map Plate Exporter** | Export publication-ready JPEG map plates directly from the live MapLibre canvas for curriculum, print, and presentations. |
 | **🤖 AI Welcome Concierge** | Integrated link to Google NotebookLM for instant answers to guest queries on Wi-Fi, check-in, air conditioning, waste management, and local secrets. |
 
 ---
@@ -95,6 +99,22 @@ Highlight_Map_Crafter/
 ```
 
 ---
+
+
+---
+
+## 🏛️ Adapting for Thematic, Historical & Educational Studios
+
+While initially highlighted around property concierge and tourism hubs, **Highlight Map Crafter's** core architecture has been successfully adapted for advanced thematic, archaeological, and educational mapping studios — including the live **Biblical Map Crafter** running in production at [BibleStudy-Crafter](https://storage.googleapis.com/biblestudy-map-crafter/index.html).
+
+### 📘 Architecture Blueprint & Implementation Guide
+For an in-depth technical whitepaper and code patterns on adapting this engine for:
+- **Dual-Template Cartography** (e.g. Vintage Historical Atlas vs. Modern Satellite)
+- **Authoritative Gazetteer Synchronization** (OpenBible, Pleiades, Wikidata)
+- **Interactive Peel Sliders & Downstream React Embeds**
+- **Chapter/Route Vector Overlays**
+
+👉 **Read the Full Upstream Blueprint**: [**`docs/highlight_map_crafter_integration_blueprint.md`**](docs/highlight_map_crafter_integration_blueprint.md)
 
 ## 🛠️ Quick Start (Local Development)
 

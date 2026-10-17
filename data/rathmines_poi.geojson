@@ -94,7 +94,33 @@
         "image_caption": "Historic RAAF PBY Catalina Flying Boat identical to those stationed at Rathmines",
         "image_author": "Unsplash Curated Collection",
         "image_license": "Free Access License",
-        "image_source_page": "https://commons.wikimedia.org/wiki/File:PBY_Catalina_flying_boat.jpg"
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:PBY_Catalina_flying_boat.jpg",
+        "photos": [
+          {
+            "thumb_url": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&auto=format&fit=crop&q=80",
+            "full_url": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&auto=format&fit=crop&q=80",
+            "caption": "Rathmines Memorial Park & Foreshore Reserve",
+            "credit": "Unsplash Curated Collection",
+            "license": "Free Access License",
+            "credit_url": "https://commons.wikimedia.org/wiki/File:PBY_Catalina_flying_boat.jpg"
+          },
+          {
+            "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Catalina_Flying_Boat_Memorial_Rathmines.jpg/800px-Catalina_Flying_Boat_Memorial_Rathmines.jpg",
+            "full_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Catalina_Flying_Boat_Memorial_Rathmines.jpg/800px-Catalina_Flying_Boat_Memorial_Rathmines.jpg",
+            "caption": "RAAF Catalina Flying Boat Memorial Park",
+            "credit": "NSW Heritage / Wikimedia Contributor",
+            "license": "CC BY-SA 3.0",
+            "credit_url": "https://commons.wikimedia.org/wiki/Category:Rathmines,_New_South_Wales"
+          },
+          {
+            "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Catalina_Base_Wharf_Lake_Macquarie.jpg/800px-Catalina_Base_Wharf_Lake_Macquarie.jpg",
+            "full_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Catalina_Base_Wharf_Lake_Macquarie.jpg/800px-Catalina_Base_Wharf_Lake_Macquarie.jpg",
+            "caption": "Historic Flying Boat Slipways & Jet Wharf",
+            "credit": "Lake Macquarie Cultural Collections",
+            "license": "Public Domain",
+            "credit_url": "https://commons.wikimedia.org/wiki/Category:Rathmines,_New_South_Wales"
+          }
+        ]
       }
     },
     {
@@ -308,7 +334,25 @@
         "image_caption": "Historic Dobell House, home and studio of Sir William Dobell",
         "image_author": "Unsplash Curated Collection",
         "image_license": "Free Access License",
-        "image_source_page": "https://commons.wikimedia.org/wiki/File:Dobell_House_Wangi_Wangi.jpg"
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Dobell_House_Wangi_Wangi.jpg",
+        "photos": [
+          {
+            "thumb_url": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&auto=format&fit=crop&q=80",
+            "full_url": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&auto=format&fit=crop&q=80",
+            "caption": "Wangi Point Waterfront Reserve & Trails",
+            "credit": "Unsplash Curated Collection",
+            "license": "Free Access License",
+            "credit_url": "https://commons.wikimedia.org/wiki/File:Dobell_House_Wangi_Wangi.jpg"
+          },
+          {
+            "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Dobell_House_Wangi_Wangi.jpg/800px-Dobell_House_Wangi_Wangi.jpg",
+            "full_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Dobell_House_Wangi_Wangi.jpg/800px-Dobell_House_Wangi_Wangi.jpg",
+            "caption": "Historic Dobell House & Artist Studio",
+            "credit": "NSW Heritage Register",
+            "license": "CC BY 3.0",
+            "credit_url": ""
+          }
+        ]
       }
     },
     {
@@ -344,7 +388,25 @@
         "image_caption": "Wangi Wangi peninsula waters and lush foreshore",
         "image_author": "Unsplash Curated Collection",
         "image_license": "Free Access License",
-        "image_source_page": "https://commons.wikimedia.org/wiki/File:Wangi_Wangi_Point_Lake_Macquarie.jpg"
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Wangi_Wangi_Point_Lake_Macquarie.jpg",
+        "photos": [
+          {
+            "thumb_url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&q=80",
+            "full_url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&q=80",
+            "caption": "Wangi Point Waterfront Reserve & Trails",
+            "credit": "Unsplash Curated Collection",
+            "license": "Free Access License",
+            "credit_url": "https://commons.wikimedia.org/wiki/File:Wangi_Wangi_Point_Lake_Macquarie.jpg"
+          },
+          {
+            "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Dobell_House_Wangi_Wangi.jpg/800px-Dobell_House_Wangi_Wangi.jpg",
+            "full_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Dobell_House_Wangi_Wangi.jpg/800px-Dobell_House_Wangi_Wangi.jpg",
+            "caption": "Historic Dobell House & Artist Studio",
+            "credit": "NSW Heritage Register",
+            "license": "CC BY 3.0",
+            "credit_url": ""
+          }
+        ]
       }
     },
     {
@@ -379,7 +441,25 @@
         "image_caption": "Sculptural Angophora costata (Smooth-barked Apple) common at Wangi Point",
         "image_author": "Unsplash Curated Collection",
         "image_license": "Free Access License",
-        "image_source_page": "https://commons.wikimedia.org/wiki/File:Angophora_costata_Sydney_Red_Gum.jpg"
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Angophora_costata_Sydney_Red_Gum.jpg",
+        "photos": [
+          {
+            "thumb_url": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&auto=format&fit=crop&q=80",
+            "full_url": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&auto=format&fit=crop&q=80",
+            "caption": "Wangi Point Waterfront Reserve & Trails",
+            "credit": "Unsplash Curated Collection",
+            "license": "Free Access License",
+            "credit_url": "https://commons.wikimedia.org/wiki/File:Angophora_costata_Sydney_Red_Gum.jpg"
+          },
+          {
+            "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Dobell_House_Wangi_Wangi.jpg/800px-Dobell_House_Wangi_Wangi.jpg",
+            "full_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Dobell_House_Wangi_Wangi.jpg/800px-Dobell_House_Wangi_Wangi.jpg",
+            "caption": "Historic Dobell House & Artist Studio",
+            "credit": "NSW Heritage Register",
+            "license": "CC BY 3.0",
+            "credit_url": ""
+          }
+        ]
       }
     },
     {
@@ -625,7 +705,25 @@
         "image_caption": "Intricate sea caves carved into sandstone cliffs at low tide",
         "image_author": "Unsplash Curated Collection",
         "image_license": "Free Access License",
-        "image_source_page": "https://commons.wikimedia.org/wiki/File:Caves_Beach_NSW_Sea_Caves.jpg"
+        "image_source_page": "https://commons.wikimedia.org/wiki/File:Caves_Beach_NSW_Sea_Caves.jpg",
+        "photos": [
+          {
+            "thumb_url": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1200&auto=format&fit=crop&q=80",
+            "full_url": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1200&auto=format&fit=crop&q=80",
+            "caption": "Caves Beach Sea Caves at Low Tide",
+            "credit": "Unsplash Curated Collection",
+            "license": "Free Access License",
+            "credit_url": "https://commons.wikimedia.org/wiki/File:Caves_Beach_NSW_Sea_Caves.jpg"
+          },
+          {
+            "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Caves_Beach_Ocean_Cliffs.jpg/800px-Caves_Beach_Ocean_Cliffs.jpg",
+            "full_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Caves_Beach_Ocean_Cliffs.jpg/800px-Caves_Beach_Ocean_Cliffs.jpg",
+            "caption": "Ocean Cliffs & Surf Horizon",
+            "credit": "Tourism NSW / Contributor",
+            "license": "CC BY-SA 3.0",
+            "credit_url": ""
+          }
+        ]
       }
     },
     {

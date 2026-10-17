@@ -18,6 +18,8 @@
   <!-- MapLibre GL JS / GeoLibre CSS & JS -->
   <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <!-- toGeoJSON for client-side KML parsing -->
+  <script src="https://unpkg.com/@tmcw/togeojson@5.8.1/dist/togeojson.umd.js"></script>
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -60,6 +62,17 @@
 
       <!-- Quick Action Tools -->
       <div class="quick-tools-card">
+        <button id="btn-load-kml" class="tab-btn"
+          style="background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff;"
+          title="Stream and Overlay KML or GeoJSON Vector Trails & Territories">
+          <span>📁</span> Vector Overlay
+        </button>
+        <input type="file" id="input-kml-file" accept=".kml,.geojson,.json" style="display: none;">
+        <button id="btn-export-map-jpg" class="tab-btn"
+          style="background: linear-gradient(135deg, #b45309, #78350f); color: #fff;"
+          title="Export High-Resolution Canvas Map Plate (JPG)">
+          <span>📸</span> Export Map
+        </button>
         <button id="btn-add-place" class="tab-btn"
           style="background: linear-gradient(135deg, #10b981, #059669); color: #fff;"
           title="Add a New Place & Personal Recommendation">
@@ -173,7 +186,10 @@
     <!-- Right Detail Drawer / Inspector Panel -->
     <aside class="detail-drawer" id="detail-drawer">
       <div class="drawer-image-wrap">
-        <img id="drawer-img" class="drawer-img" src="" alt="Location photo">
+        <img id="drawer-img" class="drawer-img" src="" alt="Location photo" style="cursor: zoom-in;" title="Click to view full image">
+        <button type="button" class="carousel-nav-btn prev" id="drawer-photo-prev" title="Previous photo">‹</button>
+        <button type="button" class="carousel-nav-btn next" id="drawer-photo-next" title="Next photo">›</button>
+        <div class="carousel-counter-badge" id="drawer-photo-counter">1 / 1</div>
         <button id="drawer-close" class="drawer-close-btn" title="Close Panel">✕</button>
         <div class="drawer-photo-credit">
           <span id="drawer-credit-author">Wikimedia Commons</span>
@@ -361,7 +377,9 @@
       <button class="lightbox-close-btn" id="lightbox-close">✕</button>
       <div class="lightbox-content-card">
         <div class="lightbox-img-holder">
+          <button type="button" class="lightbox-nav-btn prev" id="lightbox-btn-prev" title="Previous photo">‹</button>
           <img id="lightbox-img" src="" alt="Enlarged photo">
+          <button type="button" class="lightbox-nav-btn next" id="lightbox-btn-next" title="Next photo">›</button>
         </div>
         <div class="lightbox-details-bar">
           <div id="lightbox-title" class="lightbox-title">Site Title</div>

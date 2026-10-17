@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Catalina Flying Boat Heritage Circuit</name>
+    <description>Authoritative WWII RAAF Catalina flying boat base trail, slipways, hangars, and memorial reserve at Rathmines, NSW.</description>
+
+    <!-- Point 1: Memorial Gateway -->
+    <Placemark>
+      <name>Memorial Gateway &amp; RAAF Avenue</name>
+      <description>Historic entrance to the southern hemisphere's largest flying boat operating base during WWII.</description>
+      <Point>
+        <coordinates>151.5880,-33.0440,0</coordinates>
+      </Point>
+      <ExtendedData>
+        <Data name="era"><value>1939-1952</value></Data>
+        <Data name="heritage_status"><value>State Heritage Register (NSW)</value></Data>
+        <Data name="squadrons"><value>No. 11, No. 20, No. 40, No. 41, No. 43, No. 107</value></Data>
+      </ExtendedData>
+    </Placemark>
+
+    <!-- Point 2: Aircraft Slipway -->
+    <Placemark>
+      <name>Heavy Aircraft Concrete Slipway No. 1</name>
+      <description>Submerged concrete ramp designed for beaching and launching twin-engine PBY Catalina flying boats.</description>
+      <Point>
+        <coordinates>151.5935,-33.0465,0</coordinates>
+      </Point>
+      <ExtendedData>
+        <Data name="structure"><value>Reinforced Concrete Ramp</Data>
+        <Data name="depth_contour"><value>3.2m water draft</Data>
+      </ExtendedData>
+    </Placemark>
+
+    <!-- LineString: Heritage Walking Trail -->
+    <Placemark>
+      <name>Catalina Shoreline Heritage Trail</name>
+      <description>Scenic walking path tracing the original barracks, command bunker, underground fuel tanks, and launching aprons.</description>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <coordinates>
+          151.5850,-33.0420,0
+          151.5875,-33.0435,0
+          151.5898,-33.0450,0
+          151.5920,-33.0460,0
+          151.5940,-33.0472,0
+          151.5962,-33.0490,0
+        </coordinates>
+      </LineString>
+      <ExtendedData>
+        <Data name="distance_km"><value>2.4 km</value></Data>
+        <Data name="surface"><value>Paved &amp; Boardwalk</value></Data>
+        <Data name="difficulty"><value>Easy Grade 1</value></Data>
+      </ExtendedData>
+    </Placemark>
+
+    <!-- Polygon: Protected Heritage Precinct -->
+    <Placemark>
+      <name>RAAF Rathmines Heritage Conservation Zone</name>
+      <description>Statutory protected open space and archaeological precinct under Lake Macquarie LEP.</description>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              151.5840,-33.0400,0
+              151.5910,-33.0420,0
+              151.5980,-33.0480,0
+              151.5950,-33.0520,0
+              151.5870,-33.0480,0
+              151.5840,-33.0400,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+      <ExtendedData>
+        <Data name="precinct_area_ha"><value>42.5 ha</value></Data>
+        <Data name="zoning"><value>RE1 Public Recreation</value></Data>
+      </ExtendedData>
+    </Placemark>
+  </Document>
+</kml>

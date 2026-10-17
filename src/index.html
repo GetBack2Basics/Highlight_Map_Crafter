@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rathmines & Lake Macquarie Explorer | Artsy Interactive Map</title>
-  <meta name="description" content="A curated artsy interactive map and spatial course planner centered at 21 Bournville Road, Rathmines NSW, featuring verified open-source media and NSW SEED data.">
+  <meta name="description"
+    content="A curated artsy interactive map and spatial course planner centered at 21 Bournville Road, Rathmines NSW, featuring verified open-source media and NSW SEED data.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- MapLibre GL JS / GeoLibre CSS & JS -->
   <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <!-- toGeoJSON for client-side KML parsing -->
+  <script src="https://unpkg.com/@tmcw/togeojson@5.8.1/dist/togeojson.umd.js"></script>
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div id="app-container">
@@ -55,10 +62,24 @@
 
       <!-- Quick Action Tools -->
       <div class="quick-tools-card">
-        <button id="btn-add-place" class="tab-btn" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff;" title="Add a New Place & Personal Recommendation">
+        <button id="btn-load-kml" class="tab-btn"
+          style="background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff;"
+          title="Stream and Overlay KML or GeoJSON Vector Trails & Territories">
+          <span>📁</span> Vector Overlay
+        </button>
+        <input type="file" id="input-kml-file" accept=".kml,.geojson,.json" style="display: none;">
+        <button id="btn-export-map-jpg" class="tab-btn"
+          style="background: linear-gradient(135deg, #b45309, #78350f); color: #fff;"
+          title="Export High-Resolution Canvas Map Plate (JPG)">
+          <span>📸</span> Export Map
+        </button>
+        <button id="btn-add-place" class="tab-btn"
+          style="background: linear-gradient(135deg, #10b981, #059669); color: #fff;"
+          title="Add a New Place & Personal Recommendation">
           <span>➕</span> Add Place
         </button>
-        <button id="btn-toggle-admin-drag" class="icon-action-btn" title="Admin Mode: Toggle Drag-and-Drop Pin Relocation">
+        <button id="btn-toggle-admin-drag" class="icon-action-btn"
+          title="Admin Mode: Toggle Drag-and-Drop Pin Relocation">
           📍
         </button>
         <button id="btn-toggle-3d" class="icon-action-btn" title="Toggle 3D Elevation Terrain & Hillshading">
@@ -82,11 +103,17 @@
         <span>⏱️ Drive Isochrone Boundaries (Click to Zoom)</span>
       </div>
       <div class="legend-items">
-        <div class="legend-row" data-zone="zone_5m" title="Click to zoom to 5 min boundary"><span class="legend-dot dot-zone1"></span> <strong>5 mins</strong> (Rathmines, Catalina Base, Bakery)</div>
-        <div class="legend-row" data-zone="zone_15m" title="Click to zoom to 15 min boundary"><span class="legend-dot dot-zone2"></span> <strong>15 mins</strong> (Toronto, Wangi Wangi, Kilaben Bay)</div>
-        <div class="legend-row" data-zone="zone_30m" title="Click to zoom to 30 min boundary"><span class="legend-dot dot-zone3"></span> <strong>30 mins</strong> (Warners Bay, Speers Pt, Belmont)</div>
-        <div class="legend-row" data-zone="zone_1h" title="Click to zoom to 1 hour boundary"><span class="legend-dot dot-zone4"></span> <strong>1 hour</strong> (Newcastle, Caves Beach, Pokolbin)</div>
-        <div class="legend-row" data-zone="zone_2h" title="Click to zoom to 2 hours boundary"><span class="legend-dot dot-zone5"></span> <strong>2 hours</strong> (Port Stephens, Singleton, Central Coast)</div>
+        <div class="legend-row" data-zone="zone_5m" title="Click to zoom to 5 min boundary"><span
+            class="legend-dot dot-zone1"></span> <strong>5 mins</strong> (Rathmines, Catalina Base, Bakery)</div>
+        <div class="legend-row" data-zone="zone_15m" title="Click to zoom to 15 min boundary"><span
+            class="legend-dot dot-zone2"></span> <strong>15 mins</strong> (Toronto, Wangi Wangi, Kilaben Bay)</div>
+        <div class="legend-row" data-zone="zone_30m" title="Click to zoom to 30 min boundary"><span
+            class="legend-dot dot-zone3"></span> <strong>30 mins</strong> (Warners Bay, Speers Pt, Belmont)</div>
+        <div class="legend-row" data-zone="zone_1h" title="Click to zoom to 1 hour boundary"><span
+            class="legend-dot dot-zone4"></span> <strong>1 hour</strong> (Newcastle, Caves Beach, Pokolbin)</div>
+        <div class="legend-row" data-zone="zone_2h" title="Click to zoom to 2 hours boundary"><span
+            class="legend-dot dot-zone5"></span> <strong>2 hours</strong> (Port Stephens, Singleton, Central Coast)
+        </div>
       </div>
     </div>
 
@@ -146,7 +173,8 @@
 
       <!-- Sidebar Footer Tools -->
       <div class="sidebar-footer-bar">
-        <button id="btn-export-geojson" class="footer-tool-btn" title="Download updated GeoJSON dataset with all personal places & recommendations">
+        <button id="btn-export-geojson" class="footer-tool-btn"
+          title="Download updated GeoJSON dataset with all personal places & recommendations">
           <span>💾</span> Export GeoJSON
         </button>
         <button id="btn-pick-map-poi" class="footer-tool-btn" title="Click anywhere on the map to add a place">
@@ -158,11 +186,14 @@
     <!-- Right Detail Drawer / Inspector Panel -->
     <aside class="detail-drawer" id="detail-drawer">
       <div class="drawer-image-wrap">
-        <img id="drawer-img" class="drawer-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Location photo" loading="lazy" referrerpolicy="no-referrer">
+        <img id="drawer-img" class="drawer-img" src="" alt="Location photo" style="cursor: zoom-in;" title="Click to view full image">
+        <button type="button" class="carousel-nav-btn prev" id="drawer-photo-prev" title="Previous photo">‹</button>
+        <button type="button" class="carousel-nav-btn next" id="drawer-photo-next" title="Next photo">›</button>
+        <div class="carousel-counter-badge" id="drawer-photo-counter">1 / 1</div>
         <button id="drawer-close" class="drawer-close-btn" title="Close Panel">✕</button>
         <div class="drawer-photo-credit">
-          <span id="drawer-credit-author">Curated Open Photo</span>
-          <span id="drawer-credit-license">Free License</span>
+          <span id="drawer-credit-author">Wikimedia Commons</span>
+          <span id="drawer-credit-license">CC BY-SA</span>
         </div>
       </div>
 
@@ -174,17 +205,21 @@
         </div>
 
         <h2 id="drawer-title" class="drawer-title">Rathmines Park & Catalina Base</h2>
-        <p id="drawer-address" style="font-size: 0.76rem; color: var(--text-muted);">Dorrington Rd, Rathmines NSW 2283</p>
+        <p id="drawer-address" style="font-size: 0.76rem; color: var(--text-muted);">Dorrington Rd, Rathmines NSW 2283
+        </p>
 
         <!-- Personal Recommendation / Host Note Box -->
         <div class="host-tip-box" id="host-tip-box">
           <div class="host-tip-header">
             <span class="host-tip-title">⭐ Host Recommendation & Insider Tip</span>
-            <button id="btn-edit-host-tip" class="host-tip-edit-btn" title="Add or edit your personal tip">✍️ Edit Tip</button>
+            <button id="btn-edit-host-tip" class="host-tip-edit-btn" title="Add or edit your personal tip">✍️ Edit
+              Tip</button>
           </div>
-          <p id="host-tip-text" class="host-tip-text">No personal recommendation added yet. Click 'Edit Tip' to add your insider suggestions!</p>
+          <p id="host-tip-text" class="host-tip-text">No personal recommendation added yet. Click 'Edit Tip' to add your
+            insider suggestions!</p>
           <div id="host-tip-edit-container" class="host-tip-edit-wrap" style="display: none;">
-            <textarea id="host-tip-input" rows="3" placeholder="Add your personal recommendation, favorite menu items, or insider tips for this place..."></textarea>
+            <textarea id="host-tip-input" rows="3"
+              placeholder="Add your personal recommendation, favorite menu items, or insider tips for this place..."></textarea>
             <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px;">
               <button id="btn-cancel-host-tip" class="btn-sm-secondary">Cancel</button>
               <button id="btn-save-host-tip" class="btn-sm-primary">Save Tip</button>
@@ -220,7 +255,9 @@
         </div>
 
         <!-- Admin Relocate Pin Action -->
-        <button id="btn-relocate-pin" class="footer-tool-btn" style="width: 100%; margin-top: 10px; background: rgba(59, 130, 246, 0.16); border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; justify-content: center;" title="Move this pin by clicking on the map or dragging it">
+        <button id="btn-relocate-pin" class="footer-tool-btn"
+          style="width: 100%; margin-top: 10px; background: rgba(59, 130, 246, 0.16); border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; justify-content: center;"
+          title="Move this pin by clicking on the map or dragging it">
           <span>📍</span> Move / Relocate Pin on Map
         </button>
       </div>
@@ -234,7 +271,8 @@
             <span style="font-size: 1.4rem;">➕</span>
             <div>
               <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff;">Add New Place</h3>
-              <p style="font-size: 0.75rem; color: var(--text-secondary);">Add a spot with your personal recommendations & tips</p>
+              <p style="font-size: 0.75rem; color: var(--text-secondary);">Add a spot with your personal recommendations
+                & tips</p>
             </div>
           </div>
           <button id="modal-close-btn" class="drawer-close-btn" style="position: static;">✕</button>
@@ -267,7 +305,8 @@
               <label>Coordinates (Longitude, Latitude) *</label>
               <div style="display: flex; gap: 6px;">
                 <input type="text" id="new-poi-coords" required placeholder="151.5847, -33.0428">
-                <button type="button" id="btn-pick-coords" class="btn-sm-secondary" title="Pick point on map" style="white-space: nowrap;">📍 Pick</button>
+                <button type="button" id="btn-pick-coords" class="btn-sm-secondary" title="Pick point on map"
+                  style="white-space: nowrap;">📍 Pick</button>
               </div>
             </div>
             <div class="form-group flex-1">
@@ -289,12 +328,16 @@
 
           <div class="form-group">
             <label>General Description</label>
-            <textarea id="new-poi-desc" rows="2" placeholder="Brief overview of what makes this place special..."></textarea>
+            <textarea id="new-poi-desc" rows="2"
+              placeholder="Brief overview of what makes this place special..."></textarea>
           </div>
 
-          <div class="form-group" style="background: rgba(255, 183, 3, 0.08); padding: 10px; border-radius: var(--radius-sm); border: 1px solid rgba(255, 183, 3, 0.25);">
-            <label style="color: var(--accent-gold); font-weight: 700;">⭐ Your Personal Recommendation & Insider Tip</label>
-            <textarea id="new-poi-recommendation" rows="2" placeholder="e.g. 'Order the smoked trout and grab a table on the lawn at 4:30 PM for sunset!'"></textarea>
+          <div class="form-group"
+            style="background: rgba(255, 183, 3, 0.08); padding: 10px; border-radius: var(--radius-sm); border: 1px solid rgba(255, 183, 3, 0.25);">
+            <label style="color: var(--accent-gold); font-weight: 700;">⭐ Your Personal Recommendation & Insider
+              Tip</label>
+            <textarea id="new-poi-recommendation" rows="2"
+              placeholder="e.g. 'Order the smoked trout and grab a table on the lawn at 4:30 PM for sunset!'"></textarea>
           </div>
 
           <div class="form-row">
@@ -320,8 +363,10 @@
           </div>
 
           <div class="modal-actions-bar">
-            <button type="button" id="btn-cancel-modal" class="btn-sm-secondary" style="padding: 10px 20px;">Cancel</button>
-            <button type="submit" class="btn-sm-primary" style="padding: 10px 24px; font-weight: 700; font-size: 0.9rem;">💾 Save Place & Tip</button>
+            <button type="button" id="btn-cancel-modal" class="btn-sm-secondary"
+              style="padding: 10px 20px;">Cancel</button>
+            <button type="submit" class="btn-sm-primary"
+              style="padding: 10px 24px; font-weight: 700; font-size: 0.9rem;">💾 Save Place & Tip</button>
           </div>
         </form>
       </div>
@@ -332,7 +377,9 @@
       <button class="lightbox-close-btn" id="lightbox-close">✕</button>
       <div class="lightbox-content-card">
         <div class="lightbox-img-holder">
-          <img id="lightbox-img" src="" alt="Enlarged photo" loading="lazy" referrerpolicy="no-referrer">
+          <button type="button" class="lightbox-nav-btn prev" id="lightbox-btn-prev" title="Previous photo">‹</button>
+          <img id="lightbox-img" src="" alt="Enlarged photo">
+          <button type="button" class="lightbox-nav-btn next" id="lightbox-btn-next" title="Next photo">›</button>
         </div>
         <div class="lightbox-details-bar">
           <div id="lightbox-title" class="lightbox-title">Site Title</div>
@@ -342,7 +389,8 @@
             <span>•</span>
             <span id="lightbox-license">License: CC BY-SA 4.0</span>
             <span>•</span>
-            <a id="lightbox-source-link" href="#" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: underline;">View Wikimedia Source</a>
+            <a id="lightbox-source-link" href="#" target="_blank" rel="noopener"
+              style="color: var(--accent-cyan); text-decoration: underline;">View Wikimedia Source</a>
           </div>
         </div>
       </div>
@@ -353,5 +401,5 @@
   <!-- Application Logic -->
   <script src="app.js"></script>
 </body>
-</html>
 
+</html>
