@@ -24,10 +24,11 @@
 ## 🚀 Live Demo & Links
 
 - 🌐 **Live Interactive Map (GCP)**: [https://storage.googleapis.com/rathmines-interactive-map/index.html](https://storage.googleapis.com/rathmines-interactive-map/index.html)
+- 🗺️ **Live Thematic Sister Studio (Bible Map Crafter)**: [https://storage.googleapis.com/biblestudy-map-crafter/index.html](https://storage.googleapis.com/biblestudy-map-crafter/index.html)
 - 📖 **NotebookLM Guest Welcome Manual**: [Google NotebookLM Concierge](https://notebook.google.com/notebook/6e14a441-fc0d-4b66-807e-de61cb59589b)
 - 🏡 **Stay With Us (Spatial Retreat)**: [Book at Rathmines on Dibooq](https://rathmines-lakemacquire.book.dibooq.com/)
 - 💻 **Source Repository**: [https://github.com/GetBack2Basics/Highlight_Map_Crafter](https://github.com/GetBack2Basics/Highlight_Map_Crafter)
-
+- 📂 **Bible Map Crafter Source**: [BibleStudy-Crafter/map_crafter](https://github.com/GetBack2Basics/BibleStudy-Crafter/tree/main/map_crafter)
 ---
 
 ## 🏗️ Architecture
@@ -103,18 +104,27 @@ Highlight_Map_Crafter/
 
 ---
 
-## 🏛️ Adapting for Thematic, Historical & Educational Studios
+## 🏛️ Thematic & Historical Sibling: Bible Map Crafter
 
-While initially highlighted around property concierge and tourism hubs, **Highlight Map Crafter's** core architecture has been successfully adapted for advanced thematic, archaeological, and educational mapping studios — including the live **Biblical Map Crafter** running in production at [BibleStudy-Crafter](https://storage.googleapis.com/biblestudy-map-crafter/index.html).
+While initially created for property concierge and local tourism hubs, **Highlight Map Crafter's** core spatial architecture has been adapted to power **[Bible Map Crafter](https://github.com/GetBack2Basics/BibleStudy-Crafter/tree/main/map_crafter)** — a production thematic cartographic studio for ancient historical, biblical, and archaeological exploration.
+
+### 🌟 Bible Map Crafter Live Showcase
+- 🌐 **Live Web Application (GCS)**: [https://storage.googleapis.com/biblestudy-map-crafter/index.html](https://storage.googleapis.com/biblestudy-map-crafter/index.html)
+- 📂 **Source Code & Implementation**: [BibleStudy-Crafter/map_crafter](https://github.com/GetBack2Basics/BibleStudy-Crafter/tree/main/map_crafter)
+- 📖 **Parent Platform**: [BibleStudy-Crafter](https://github.com/GetBack2Basics/BibleStudy-Crafter)
+
+#### How Bible Map Crafter Extends Highlight Map Crafter:
+1. **📜 Dual-Template Cartography (Ancient Historical Atlas vs. Modern Satellite)**: Replaces modern asphalt roads with custom vintage parchment relief, hillshading, and historical kingdom borders—with an interactive peel slider.
+2. **📍 Authoritative Archaeological Gazetteers**: Synchronizes over 1,200 biblical and ancient Near East sites with OpenBible.info, Pleiades, and Wikidata.
+3. **🎯 Multi-Geometry Hitbox Engine**: Leverages Highlight Map Crafter's 8px bounding-box vector click tolerance for interactive journeys (Exodus routes, Paul's missionary travels) and territorial polygons (tribal allotments, Roman provinces).
+4. **🖼️ Multi-Photo Archaeological Lightbox**: Rich multi-image carousels with verified Wikimedia Commons media and fullscreen modal lightbox.
+5. **📸 High-Resolution Dual-Plate Exporter**: Direct client-side canvas rendering that exports matching ancient and modern plates for educational curriculum and study guides.
 
 ### 📘 Architecture Blueprint & Implementation Guide
-For an in-depth technical whitepaper and code patterns on adapting this engine for:
-- **Dual-Template Cartography** (e.g. Vintage Historical Atlas vs. Modern Satellite)
-- **Authoritative Gazetteer Synchronization** (OpenBible, Pleiades, Wikidata)
-- **Interactive Peel Sliders & Downstream React Embeds**
-- **Chapter/Route Vector Overlays**
+For an in-depth technical whitepaper and code patterns on adapting this engine for thematic and educational mapping:
+👉 **Read the Full Upstream Blueprint**: [**docs/highlight_map_crafter_integration_blueprint.md**](docs/highlight_map_crafter_integration_blueprint.md)
 
-👉 **Read the Full Upstream Blueprint**: [**`docs/highlight_map_crafter_integration_blueprint.md`**](docs/highlight_map_crafter_integration_blueprint.md)
+---
 
 ## 🛠️ Quick Start (Local Development)
 
